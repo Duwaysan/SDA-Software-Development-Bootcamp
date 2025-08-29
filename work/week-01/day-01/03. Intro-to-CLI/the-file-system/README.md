@@ -9,57 +9,59 @@
 
 Before navigating the file system, we should understand what it is. The file system is the organizational structure of a computer.
 
-Just as products in a store are organized by their broadest categories, then divided into sections with aisles full of shelves holding individual products, the files on a computer are organized into directories (also commonly called folders in a GUI).
+Just like products in a store are grouped into categories, divided into sections, and arranged on shelves, the files on a computer are organized into directories (also known as folders in a GUI).
 
-Imagine you were finding a can of soup at a store. You would start in the store, go to the grocery section, find the canned goods aisle, look for soup, and then find the specific one you want.
+Imagine you are trying to find a can of beans in a store. You would start at the entrance, head to the grocery section, find the canned goods aisle, locate the shelf for beans, and then choose the specific kind you want.
 
 Suppose we visualized this:
 
-![Our soup in the store!](./assets/our-soup.png)
+![Our beans in the store!](./assets/our-beans.png)
 
-There is a clear path to our soup! What if we added some other parts of a store to our example?
+There is a clear path to our can of beans! What if we added more areas of the store?
 
 ![A whole store!](./assets/store.png)
 
-The path from the store to our specific soup is still highlighted, but we've added some other parts of the store to this diagram. Enough about soup; what does this have to do with a file system?
+The path from the store entrance to our specific can of beans is still highlighted, but now we can also see other departments.
 
-A file system on a computer follows a lot of the same patterns. Imagine you were finding some music you made on your computer.
+So what does this have to do with a file system?
 
-You'd start in the *root* directory - `/`. This directory holds all the other directories and files. It's like the store in our example. Then, you'd move into the `Users` directory. From here, move to your specific user directory (the *user root* or *home* directory). Finally, you'd move into your `Music` directory, where you would find your important music!
+A file system on a computer works in a very similar way. Imagine you’re looking for music you recorded on your computer.
 
-Another visual for you:
+You would start in the _root_ directory – `/`. This directory contains all other files and folders. It's like the store itself. Next, you'd go into the `Users` directory. From there, you’d open your specific user folder (this is your _home_ directory). Finally, you’d go into your `Music` directory to find your files.
+
+Here’s a visual example:
 
 ![Our beats in the file system!](./assets/beats.png)
 
-Above, you can see the path to the `beats` file visualized. The word path, or more accurately, *absolute path*, actually has a meaning in this context - it's the unique location for every file or directory in the file system. Each directory in the path is followed by a `/`. The *absolute path* for the `beats` file is:
+This shows the path to the `beats` file. The word _path_ refers to the exact location of a file or folder in the system. The _absolute path_ to the `beats` file is:
 
 ```plaintext
 /Users/student/Music/beats
 ```
 
-> 📚 The *root* directory is denoted by a single forward slash (`/`) in Unix-based systems. It is the top-level directory in a file system hierarchy. It is the starting point for the entire file system, and all other directories and files are organized inside it.
+> 📚 The _root_ directory is represented by a single forward slash (`/`) on Unix-based systems. It’s the top-level directory — everything starts from here.
 >
-> The *home* directory is the personal directory assigned to each user on a system. The home directory is the default location where user-specific configuration files, personal documents, and other data are stored. There's a shorthand for this directory: `~`.
+> The _home_ directory is the personal space for a user on the system. It stores your documents, downloads, settings, and more. There's also a shortcut for the home directory: `~`.
 >
-> The *absolute path* to a file is where the file is located from the perspective of the *root* directory.
+> The _absolute path_ is the full path to a file or folder, starting from the root directory.
 
 We'll see more examples of paths later.
 
-Back to the store example, just like how departments, aisles, and shelves are constructs used to organize individual products sold, directories are just constructs we use to organize individual files. Directories themselves don't have a real purpose beyond allowing us to organize files logically.
+Back to our store example: just as departments, aisles, and shelves help organize products like beans, directories help us organize files. Directories don’t do much on their own — their job is to hold other files and folders in a way that makes sense to us.
 
-However, the computer itself won't stop you from doing illogical things. If you wanted to throw every file you ever created onto your desktop, you could (but please don't).
+Of course, the computer won’t stop you from organizing your files badly. If you wanted to dump everything you ever made onto your desktop, you could (but please don’t).
 
-Again, just like in our store example, there's a whole lot more going on with the file system than just this one `beats` file!
+Just like our store has more than one product, your file system has more than one file.
 
 ![Our file system. Please clean your desktop!](./assets/file-system.png)
 
-The path from the *root* to the music file is still highlighted, but we've added some other common directories and files to this diagram. The directories not on the path to the beats file have been colored gray, and individual files are colored white.
+The path from the root to the `beats` file is still highlighted, but we’ve added other common directories and files. The gray folders are not part of the path to `beats`, and the white icons represent individual files.
 
-Many directories shown here would presumably have something inside them (although they don't have to). These details are not shown for simplicity.
+Most directories would contain something (though they don’t have to), but we’ve kept it simple here.
 
-Let's establish some shared language using this visual. We'll use the `student` directory as an example:
+Let’s build some shared vocabulary using this diagram. Take the `student` directory, for example:
 
-- The `student` directory has many *children* (`Applications`, `Downloads`, `Movies`, and so on).
-- It only has one *parent* (`Users`). A file or directory may only ever have a single parent.
+- The `student` directory has many _children_, like `Applications`, `Downloads`, and `Movies`.
+- It has one _parent_: `Users`. Every file or folder has exactly one parent.
 
-One last thing to note before we move on. Directories can hold both directories and files - see the `Downloads` directory above.
+One final note before we move on: directories can contain both other directories and individual files — as you can see in the `Downloads` folder above.

@@ -13,12 +13,6 @@ How you open your terminal application will depend upon your OS.
 
 In macOS, use Spotlight to search for and open Terminal. Press `⌘ Command` + `Space` to open Spotlight and search for `Terminal`. Press `Enter` to open it.
 
-### Windows
-
-If you have not completed Installfest, you won't have your Terminal configured yet. Sit back and take everything in!
-
-If you have completed Installfest, use your system search to launch the Windows Terminal application in Windows 10 or the Terminal application in Windows 11. Despite the difference in names, a search for `Terminal` should work on either OS.
-
 ### Ubuntu
 
 Ubuntu is cool and has a built-in keyboard shortcut to launch the Terminal application: `Ctrl` + `Alt` + `T`.
