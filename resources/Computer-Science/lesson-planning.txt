@@ -1,0 +1,34 @@
+Computer Science Lesson Plan:
+
+- Intro to Comp-Sci - 15 min lesson
+- Algorithms - 15 min lesson
+- Big-O Notation - 30 min lesson, 1 hr exercise
+- Recursion - 30 min lesson, 1 hr exercise
+- Intro to Sorting Algorithms - 30 min lesson, 1 hr exercise
+- Basic Sorting Algorithms - 30 min lesson, 2 hr exercise
+- Distribution Sorting Algorithms - 30 min lesson, 1 hr exercise
+- Divide and Conquer Sorting Algorithms - 30 min lesson, 2 hr exercise
+- Search Algorithms - 30 min lesson, 1 hr exercise
+- Intro to Data Structures - 30 min lesson
+- Linked Lists - 30 min lesson, 2 hr exercise
+- Stacks and Queues - 30 min lesson, 1 hr exercise
+- Hash Tables - 1 hr lesson, 1 hr exercise
+- Sets - 30 min lesson, 1 hr exercise
+- Trees - 1 hr lesson, 2 hr exercise
+- Graphs - 30 min lesson, 1 hr exercise
+- Design Patterns - 20 min lesson, 20 min exercise
+
+---
+
+Schedule:
+
+Week 01: N/A
+Week 02: Intro to Comp-Sci & Algorithms
+Week 03: Big-O Notation & Recursion
+Week 04: Intro to Sorting Algorithms & Basic Sorting Algorithms
+Week 05: Distribution Sorting Algorithms & Divide and Conquer Sorting Algorithms
+Week 06: Search Algorithms, Intro to Data Structures & Linked Lists
+Week 07: Stacks and Queues & Hash Tables
+Week 08: Sets & Trees
+Week 09: Graphs & Design Patterns
+Week 10: ???
