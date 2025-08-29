@@ -3,9 +3,9 @@
   <span class="subhead">Fundamentals</span>
 </h1>
 
-**Learning objective:** By the end of this lesson, students will be able to open their OS's terminal application and run basic commands.
+**Learning objective:** By the end of this lesson, students will be able to open their OS's terminal application, learn about shells, understand and run basic commands, .
 
-## Open the terminal application
+## The Terminal
 
 How you open your terminal application will depend upon your OS.
 
@@ -23,7 +23,7 @@ A quick note on the Ubuntu Terminal - copying and pasting uses a different keybo
 
 To copy from the Ubuntu terminal, use `Ctrl` + `Shift` + `C`. To paste text in the Ubuntu terminal, use `Ctrl` + `Shift` + `V`.
 
-## The terminal interface
+### The Command Line Interface
 
 Regardless of your operating system, when your terminal application launches, you should see a window similar to the following:
 
@@ -38,8 +38,42 @@ Here, you'll see the *prompt*. Let's dissect it:
 1. The arrow `➜` indicates that the computer is ready to receive input. We can type commands on this line, and they can be executed.
 2. The tilde `~` indicates our current location in the file system. We'll cover this more soon.
 3. The cursor `█`. When you start typing, this is where the text will appear and is how we write commands to be executed.
+4. The **command line** is the space where the cursor is / where the commands are typed in.
 
 > 📚 The *prompt* is a sequence of characters used in a command-line interface to indicate readiness to accept commands.
+
+## The Shell
+
+So far we've learned about the:
+- **The Terminal:** A program that provides a graphical interface to type commands and output the results of running those commands and...
+- **Command line:** The space where we input text commands
+
+The third component in this is the **shell**. The **shell** is the program that runs in the terminal and takes your executed commands and decides what to do with them. When there are results to show the user, the shell sends that information to be displayed to the user inside the terminal. The shell acts as an intermediary between the user and the system.
+
+Here's a step-by-step walkthrough of a potential interaction loop:
+
+1. You open a terminal application on your computer. A graphical interface is displayed for you to type and view text.
+2. Inside the terminal is a shell. It waits to receive executed commands.
+3. You type a command on the command line and then execute the command by pressing `Enter`.
+4. The shell processes the command. Depending on the command, it might handle it directly or call on the OS or another external program to execute it.
+5. The results are displayed back in the terminal for the user to see.
+
+There are a variety of shells available, in this course we will use Zsh.
+
+## Commands
+
+This question is harder to answer than you might initially hope, but in short, a command is anything you can execute directly from the command line.
+
+What makes this difficult to define is that there are four main types of commands you might use:
+
+- **Built-in Commands:** These are commands directly integrated into the shell. For example, when you run `cd`, the shell handles these commands internally without invoking external programs.
+- **Executable Programs:** These commands correspond to external apps or scripts on the system. The `ls` command is an example of this, along with any other application run from the terminal. When these apps are run, the shell spawns a new process to execute this external program.
+- **Functions:** These are user-defined, callable mini-scripts, typically set in shell configuration files. Once a function is defined, it can be executed directly like any other command.
+- **Aliases:** These are user-defined shortcuts for other commands. They're a way to reduce typing, standardize complex commands, or even correct common typos. When an alias is defined, it acts as a substitute for another command.
+
+The varying types of commands add some complexity to working with them. For example, the `man` command won't be able to tell you anything about functions or aliases. This can make the behaviors of some commands feel inconsistent.
+
+Another thing that may make commands feel inconsistent is also one of the things that makes the command line feel powerful - anyone can write a command. But, because anyone can write commands, they may not consistently follow the best possible practices, such as writing help documentation for that command.
 
 ## Your first command
 

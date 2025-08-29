@@ -305,4 +305,47 @@ In the long term, reduce your reliance on the mouse. Some CLI keyboardshortcuts:
 - up / down arrows
   - cycle command history
 
+## COMMON ACTIONS
 
+#### Renaming Files
+
+- Guess what - there's no dedicated bash command to rename files and directories!
+
+- Don't panic!  The `mv` command is very flexible!
+
+- Here's how we can rename the `warm.pjs` file to `summer.pjs` from anywhere:
+	
+	```sh
+	$ mv ~/drawers/pjs/warm.pjs ~/drawers/pjs/summer.pjs
+	```
+- Of course, you can actually move and rename simultaneously!
+
+
+#### Moving Multiple Files
+
+- To demonstrate moving multiple files, re-create the `dress.socks` file we just deleted from the `socks` directory.
+
+- Now let's move all of the `.socks` files out of the `socks` folder into our _home_ folder. The following command assumes we're inside the `socks` folder:
+
+	```sh
+	$ mv *.socks ~
+	```
+
+- Now, without changing directories, return the socks files back to where they belong
+
+
+#### Copying Files & Directories
+
+- Use the `cp` command to copy files and directories.
+
+- Here's an example of how to copy all **.js** files:
+
+	```sh
+	$ cp *.js ~/dest-folder
+	```
+
+- And entire directories by adding the `-R` option:
+
+	```sh
+	$ cp -R ./sample-code ~/dest-folder
+	```
