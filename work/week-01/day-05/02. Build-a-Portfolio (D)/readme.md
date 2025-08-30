@@ -28,6 +28,9 @@ You must have **at a minimum** each of the following items:
 5. one emoji
 6. fun information about yourself : )
 7. your name!
+8. deployed via gh-pages (we will do this in class)
+9. 
+🚀🚀 KEEP IT SIMPLE AND FUN!!!! 🚀🚀
 
 ## Tips && Hints
 

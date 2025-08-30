@@ -178,7 +178,7 @@ Keep in mind you grow when we challenge you... So we will absolutely help you ev
                 <strong>ROLE:</strong> Instructional Associate
                 <br/>
                 <br/>
-				<strong>FROM:</strong> TBD
+				<strong>FROM:</strong> Monterrey, Mexico
 				<br/>
 				<br/>
                 <strong>HOURS:</strong>				
