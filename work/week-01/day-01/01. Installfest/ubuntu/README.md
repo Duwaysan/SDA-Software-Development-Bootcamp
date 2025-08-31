@@ -143,13 +143,13 @@ To install Python, run these commands in your terminal application:
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get update
-sudo apt-get install python3.11
+sudo apt-get install python3.13
 ```
 
-Make Python 3.11 the default version used with:
+Make Python 3.13 the default version used with:
 
 ```bash
-sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 10
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.13.2
 ```
 
 You can test the installation by running `python3 --version`.
