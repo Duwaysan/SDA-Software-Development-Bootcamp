@@ -221,10 +221,10 @@ Python is an extremely popular programming language with a simple syntax. It is 
 
 macOS comes with Python 3 pre-installed. However, we want to avoid using the system's built-in version, which can lead to difficult-to-debug errors and potential system issues!
 
-Let's have Homebrew install version 3.11 of Python by running this command in your Terminal application:
+Let's have Homebrew install version 3.13 of Python by running this command in your Terminal application:
 
 ```bash
-brew install python@3.11
+brew install python@3.13
 ```
 
 This may take a moment.
@@ -256,7 +256,7 @@ Test your Python installation by running the below commands in your Terminal.
 python3 --version
 ```
 
-This command should output a version number ***starting*** with `Python 3.11`.
+This command should output a version number ***starting*** with `Python 3.13`.
 
 #### `python3` directory
 
@@ -264,7 +264,7 @@ This command should output a version number ***starting*** with `Python 3.11`.
 which python3
 ```
 
-This command should output a file path ***ending*** with `/python@3.11/libexec/bin/python3`.
+This command should output a file path ***ending*** with `/python@3.13/libexec/bin/python3`.
 
 #### Next steps
 
@@ -274,10 +274,10 @@ Continue to the **PostgreSQL** section below if you don't have any errors or dis
 
 #### Install errors
 
-You may receive the following error after running `bash install python@3.11`:
+You may receive the following error after running `bash install python@3.13`:
 
 ```plaintext
-Error: python@3.11: the bottle needs the Apple Command Line Tools to be installed.
+Error: python@3.13: the bottle needs the Apple Command Line Tools to be installed.
   You can install them, if desired, with:
     xcode-select --**install**
 ```
@@ -292,7 +292,7 @@ Retry the installation after running this command and following the prompts.
 
 #### Wrong version number output by `which python`
 
-If the `which python` command outputs a file path ***ending*** with `/libexec/bin/python3` but is preceeded by a different version of python (for example: `/python@3.12/libexec/bin/python3` or `/python@3.10/libexec/bin/python3`) then you have already installed Python using Homebrew in the past and Homebrew is using that previous installation as the default version that it tracks.
+If the `which python` command outputs a file path ***ending*** with `/libexec/bin/python3` but is preceeded by a different version of python (for example: `/python@3.11/libexec/bin/python3` or `/python@3.12/libexec/bin/python3`) then you have already installed Python using Homebrew in the past and Homebrew is using that previous installation as the default version that it tracks.
 
 To resolve this, open your `~/.zshrc` file in VS Code by running this command in your terminal:
 
@@ -300,7 +300,7 @@ To resolve this, open your `~/.zshrc` file in VS Code by running this command in
 code ~/.zshrc
 ```
 
-At the end of the file you should see a line of text reading something like: `export PATH="/opt/homebrew/opt/python@X.XX/libexec/bin:$PATH"` where `python@X.XX` is the version of python Homebrew is tracking (for example `python@3.12` or `python@3.10`). Change ***only*** the version number here - it should be `python@3.11`. ***Do not modify any of the other text on this line, only the version number.***
+At the end of the file you should see a line of text reading something like: `export PATH="/opt/homebrew/opt/python@X.XX/libexec/bin:$PATH"` where `python@X.XX` is the version of python Homebrew is tracking (for example `python@3.11` or `python@3.12`). Change ***only*** the version number here - it should be `python@3.13`. ***Do not modify any of the other text on this line, only the version number.***
 
 Ensure the file is saved, then close the `~/.zshrc` file. Quit your Terminal application entirely. Start a new terminal session. Run this command:
 
