@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    
+
 }
 
 body {
@@ -23,5 +23,9 @@ h1 {
     margin: 3px 3px 3px 6px;
     border: 1.5px dotted red;
     padding: 3px;
+}
+
+.test {
+    color: red;
 }
 
