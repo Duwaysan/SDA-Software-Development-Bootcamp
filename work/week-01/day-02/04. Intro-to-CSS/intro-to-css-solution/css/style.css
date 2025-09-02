@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    
+}
+
+body {
+    background-color: seashell;
+    --brand-color: #7289DA;
+    --mynewcolor: yellow;
+}
+
+h1 {
+    color: red;
+}
+
+/* #about {
+    color: green;
+} */
+
+.important, p {
+    color: var(--mynewcolor);
+    /* width: 50%; */
+    margin: 3px 3px 3px 6px;
+    border: 1.5px dotted red;
+    padding: 3px;
+}
+
