@@ -19,18 +19,22 @@ Before you begin, make sure you have the following:
 ### Step 1: Remove the incorrect Github credentials from Windows Credentials Manager
 
 1. Open the Start Menu and search for "Credential Manager". Once open it should like so:
-<img width="600" height="206" alt="shot1" src="https://github.com/user-attachments/assets/789be1a8-11a3-407e-b4b0-1c8738394e62" />
+   
+![shot1](https://git.generalassemb.ly/ENT-SDA-SEB-216-IP/SDA-SIRAJ/assets/37351/b6a8a9fe-01b6-41fa-8b56-5b48077f10ae)
 
 2. Click on "Windows Credentials" as selected above
 
 3. Look for an entry named git:https://github.com in the list (you may have one for each account):
-<img width="660" height="64" alt="shot2" src="https://github.com/user-attachments/assets/54de13d4-7626-4cf3-ae74-04a9ce17a7a1" />
+   
+![shot2](https://git.generalassemb.ly/ENT-SDA-SEB-216-IP/SDA-SIRAJ/assets/37351/432243e9-990f-482b-8986-14551c5b221b)
 
 4. Click on it to expand it, and then click "Remove".
-<img width="660" height="198" alt="shot3" src="https://github.com/user-attachments/assets/d276a165-f85d-4bdb-a98b-d59b6795c59f" />
+   
+![shot3](https://git.generalassemb.ly/ENT-SDA-SEB-216-IP/SDA-SIRAJ/assets/37351/6ceb8000-efc7-4d44-9ead-f390115cf619)
 
 5. Confirm you want to delete the key
-<img width="729" height="380" alt="shot4" src="https://github.com/user-attachments/assets/69a78286-d589-4d61-94fc-15d16ffeb04e" />
+   
+![shot4](https://git.generalassemb.ly/ENT-SDA-SEB-216-IP/SDA-SIRAJ/assets/37351/b17ed79e-1dc7-463e-be9d-ee6363245a00)
 
 ### Step 2: Configure WSL Git to Use the Windows Credential Manager
 
@@ -61,8 +65,8 @@ With the helper configured, you now need to perform one action that requires aut
     ```
 
 3.  The Git Credential Manager will now activate and prompt you for your credentials one at a time. It might look like this if it's on your terminal:
-<img width="577" height="72" alt="shot5" src="https://github.com/user-attachments/assets/55f71c6b-0e5b-496f-8b19-8198f06b3525" />
 
+![shot5](https://git.generalassemb.ly/ENT-SDA-SEB-216-IP/SDA-SIRAJ/assets/37351/ffbb60c2-e0e4-43d9-8ca7-80003b945620)
 
 4.  ❗❗ Enter your credentials as follows:
     * **Username**: Enter your GitHub username.
@@ -75,4 +79,4 @@ Once the command succeeds, your PAT is now securely stored in the Windows Creden
 * **Test It**: Run another Git command that requires authentication (e.g., `git pull` again). It should now complete immediately without asking for a username or password.
 * **Confirm in Windows**: You can optionally open the **Credential Manager** on your Windows host, go to **Windows Credentials**, and you will now see an entry listed for `git:https://github.com`. This confirms the credential was successfully stored.
 
-Your setup is now complete. Pushing to GitHub will no longer require you to authenticate.
+Your setup is now complete. Pushing to GitHub should no longer require you to authenticate.
