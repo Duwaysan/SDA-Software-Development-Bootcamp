@@ -1,6 +1,6 @@
 <img width="100%" src="https://i.imgur.com/CYx9Es5.png" />
 
-# Week 01 - Schedule
+# Week 02 - Schedule
 ## Sunday, September 7th - Thursday, September 11th.
 
 ![Week Two](https://i.imgur.com/bSqRZPP.png "week two")
