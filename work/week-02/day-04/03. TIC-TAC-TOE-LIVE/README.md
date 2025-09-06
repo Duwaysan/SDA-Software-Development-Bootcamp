@@ -16,12 +16,12 @@ The structure below is the standard setup for deploying and developing a webpage
 
 ```
 /02. TIC-TAC-TOE-LIVE
-	/game
-		/css
-            /style.css
-	    /index.html
-        /js
-            /app.js
+    /css
+        /style.css
+    /js
+        /app.js (or main.js)
+    /index.html
+    /readme.md
 ```
 
 
