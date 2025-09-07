@@ -51,13 +51,13 @@ This morning we will give you all the option to show off the work you have been 
         </td>
 	</tr>
 	<tr>
-		<td>• Majed Al Maliki</td>
+		<td>• Majed Almalki</td>
 		<td>
             <a target="_blank" href="https://majedyalmalki.github.io/portfolio/">Link</a>
         </td>
 	</tr>
 	<tr>
-		<td>• Turki Al Maliki</td>
+		<td>• Turki Almalki</td>
 		<td>
             <a target="_blank" href="https://itkex.github.io/portfolio/">Link</a>
         </td>
