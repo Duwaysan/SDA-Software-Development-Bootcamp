@@ -9,4 +9,6 @@ addOne(-5) //=> -4
 -----------------------------------------------------------------*/
 // Your solution for 01-addOne here:
 
-export function addOne() {}
+export function addOne(num) {
+    return num+1;
+}
