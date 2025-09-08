@@ -58,9 +58,9 @@ const profile = {
     set fullName(test) {
         return `${this.firstName} ${this.sirName}`;
     },
-    set fullName(test) {
-        this.fullName = test;
-    },
+    // set fullName(test) {
+    //     this.fullName = test;
+    // },
 }
 
 console.log(profile.createFullName())
