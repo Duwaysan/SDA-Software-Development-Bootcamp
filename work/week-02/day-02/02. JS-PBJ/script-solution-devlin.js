@@ -29,7 +29,7 @@ function peanutButterAndJellySandwhich() {
     
     // - WHAT KIND OF BREAD WOULD YOU LIKE?
     const breadOptions = { 1: "White Bread", 2: "Wheat Bread", 3: "Multi-Grain Bread" }
-    while(!(kindOfBread in breadOptions )) {
+    while(!(kindOfBread in breadOptions)) {
         kindOfBread = prompt("Which bread would you like?\n1: White Bread\n2: Wheat Bread\n3: Multi-Grain Bread").trim(); 
         if (!(kindOfBread in breadOptions)) console.log("Please choose a valid option.");
     }
@@ -62,9 +62,9 @@ function peanutButterAndJellySandwhich() {
         if (!(crust in crustOptions)) console.log("Please choose a valid option.");
     }
 
+    // - DISPLAY SANDWICH / ENJOY
     console.log(`Thank you for ordering a sandwich.\nThis is what your sandwich will include:\nYou have a ${pnutButterOptions[kindOfPnutButter]} Peanut Butter Sandwich\nwith ${jellyOptions[kindOfJelly]} jelly, ${crustOptions[crust].toLowerCase()},\n${ cutChoice === 3 ? " not cut." : `and cut ${cutOptions[cutChoice].toLowerCase()}` } `)
 
-// - DISPLAY SANDWICH / ENJOY
 }
 
 
