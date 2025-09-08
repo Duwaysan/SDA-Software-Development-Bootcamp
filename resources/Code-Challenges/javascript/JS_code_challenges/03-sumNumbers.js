@@ -12,4 +12,11 @@ sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
 
-export function sumNumbers() {}
+export function sumNumbers(arr) {
+    if (!arr.length)
+        return 0
+    let sum = 0
+    for (const num of arr)
+        sum += num
+    return sum
+}

@@ -13,4 +13,12 @@ Hint:  Check out the Further Study section of the JS Functions lesson regarding 
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
 
-export function addList() {}
+export function addList(...params) {
+    console.log(params)
+    if (!params.length)
+        return 0
+    let sum = 0
+    for (const num of params)
+        sum += num
+    return sum
+}
