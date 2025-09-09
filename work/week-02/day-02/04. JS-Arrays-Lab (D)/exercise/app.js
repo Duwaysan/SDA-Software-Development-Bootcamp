@@ -266,8 +266,8 @@ Complete Exercise 15 in the space below:
 */
 
 let total=0
-for (num of nums){
-    total+=num
-}
+for (const arr of numArrays)
+   for (const num of arr)
+      total+=num
 
 console.log('Exercise 15 result:\n', total);
