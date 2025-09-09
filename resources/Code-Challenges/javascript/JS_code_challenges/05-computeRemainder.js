@@ -13,4 +13,8 @@ computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
 
-export function computeRemainder() {}
+export function computeRemainder(num1,num2) {
+    if (num2 === 0)
+        return Infinity
+    return num1%num2
+}

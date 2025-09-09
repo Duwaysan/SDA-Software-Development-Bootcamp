@@ -12,4 +12,17 @@ range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
 
-export function range() {}
+export function range(num1, num2) {
+    const arr=[]
+    if (num1>num2)
+        return "First argument must be less than second"
+    for (let i=num1; i<num2;i++)
+        arr.push(i)
+    return arr
+}
+// let num1=1
+// let num2=4
+// const arr=[]
+//    for (let i=num1; i<num2;i++)
+//         arr.push(i)
+// console.log(arr)
