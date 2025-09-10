@@ -1,58 +1,102 @@
-const buttons = document.querySelectorAll('.button');
 
-// buttons.forEach((button) => {
-//   button.addEventListener('click', (event) => {
-//     // This log is for testing purposes to verify we're getting the correct value
-//     console.log(event.target.innerText);
-//     // Future logic to capture the button's value would go here...
-//   });
-// });
 
-let firstNum = 0
-let secondNum = 0
+/*-------------------------------- Constants --------------------------------*/
+
+let numbers = document.querySelectorAll(".number");
+
+let operationBtns = document.querySelectorAll(".operation");
+
+let totalDisplay = document.querySelector(".display");
+
+let equalsBtn = document.querySelector(".equals");
+
+let clearBtn = document.querySelector(".clear");
+
+/*-------------------------------- Variables --------------------------------*/
+let nums1 = [];
+let nums2 = [];
+let num1 = 0
+let num2 = 0
+let result = 0
 let operator = null
+// let readyToCal = false
+/*------------------------ Cached Element References ------------------------*/
 
 const calculator = document.querySelector('#calculator');
-calculator.addEventListener('click', (event) => {
-  // This log is for testing purposes to verify we're getting the correct value
-  // You have to click a button to see this log
-// console.log(event.target.innerText);
-input = event.target
-function ifNumber(target){
-    return target.classList.contains('number')
-}
-function ifOperator(target){
-    return target.classList.contains('operator')
-}
-
-
- 
-    if(ifNumber(input) && firstNum === 0)
-        firstNum = input.innerText
-    console.log(firstNum)
-    if (ifOperator(input) && firstNum !==0 && secondNum === 0)
+/*----------------------------- Event Listeners -----------------------------*/
+calculator.addEventListener('click', (evnt) => {
     
-    if(ifNumber(input) && firstNum === 0)
+    
+    buildEquation(evnt) // Assign input numbers to nums1 and nums2 list
+    if (evnt.target.innerText === '=')
+        calculate(result,num2,operator)
+    if (evnt.target.innerText === 'C')
+        reset()
 
-
-
-
-
-
-
-
-
-
-
-//   // Example
-//   if (event.target.classList.contains('number')) {
-//     // Do something with a number
-//     console.log(event.target.classList)
-//   }
-
-//   // Example
-//   if (event.target.classList.contains('operator')) {
-//     // Do something with this operator
-//     console.log(event.target.classList)
-//   }
 });
+
+/*-------------------------------- Functions --------------------------------*/
+
+function buildEquation(el) {
+    firstOrSecond(el)
+    if (el.target.classList.contains('operator'))
+        operator = el.target.innerText
+    }
+
+function firstOrSecond(el) {
+        if(!operator && nums2.length === 0  &&  el.target.classList.contains('number')){
+            nums1.push(el.target.innerText)
+            result = parseInt(nums1.join(''))
+            totalDisplay.innerText = result 
+
+        }
+        else if(operator && nums1.length > 0  &&  el.target.classList.contains('number')){
+            nums2.push(el.target.innerText)
+             num2 = parseInt(nums2.join(''))
+             totalDisplay.innerText = num2
+        }
+        
+}
+
+function calculate(num1, num2, operator) {
+        if (operator === "+") {
+        result +=  num2;
+    } else if (operator === "-") {
+        result -=  num2;
+    } else if (operator === "*") {
+        result *= num2;
+    } else if (operator === "/") {
+        if (num2 !== 0) {
+            result /= num2;
+        }
+    } else {
+        result = "Error";
+    }
+    totalDisplay.innerText = result
+}
+
+
+function isType(target) {
+    if (target.classList.contains('number'))
+        return 'number'
+    if (target.classList.contains('operator'))
+        return 'operator'
+}
+
+
+function reset() {
+    nums1 = []
+    nums2 = []
+    num1 = 0
+    num2 = 0
+    result = 0
+    operator = null
+    totalDisplay.innerText = result
+}
+
+
+
+
+
+
+
