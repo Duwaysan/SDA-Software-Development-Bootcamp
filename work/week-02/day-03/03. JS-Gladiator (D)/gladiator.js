@@ -3,7 +3,7 @@ const prompt = require('prompt-sync')
 class Gladiator{
     static weapons = ['Spear','Club','Trident']
     constructor (name,weapon){
-        if (!Gladiator.weapons.includes(weapon)) throw new Error(`Invalid weapon: ${weapon}`)
+        // if (!Gladiator.weapons.includes(weapon)) throw new Error(`Invalid weapon: ${weapon}`)
         this.name = name;
         this.weapon = weapon
             
@@ -28,24 +28,25 @@ class Arena{
     }
 
     fight(){
-        if (glad1.name === 'Maximus' || glad2.name === 'Maximus'){
-            console.log('CROWD IS ENTERTAINED')
-            console.log(`Gladiator Maximus Won!!`)
-            return}
-        
         if (this.gladiators.length === 2){ //make sure there are 2 gladiators on the field
         let glad1 = this.gladiators[0]
         let glad2 = this.gladiators[1]
         let glad1Weap =  glad1.weapon
         let glad2Weap =  glad2.weapon
-        const weapMap = { Trident:"Spear",
-                    Spear:"Club",
-                    Club:"Trident"
+        const weapMap = {Trident:"Spear",
+                        Spear:"Club",
+                        Club:"Trident"
                 }
+        if (glad1.name === 'Maximus' || glad2.name === 'Maximus'){
+            console.log('CROWD IS ENTERTAINED')
+            console.log(`Gladiator Maximus Won!!`)
+            return}
+        
+
         if (glad1Weap === glad2Weap){
             thumbs = prompt(`Thumbs "up" for the gladiators ${glad1.name} and ${glad2.name} to COMEBACK!!!`)
             if (!thumbs === "up")
-            this.gladiators.splice(0,2)
+                this.gladiators.splice(0,2)
             console.log(`Both Gladiators were Eleminated`)
         }
         else if(weapMap[glad1Weap] === glad2Weap ){
