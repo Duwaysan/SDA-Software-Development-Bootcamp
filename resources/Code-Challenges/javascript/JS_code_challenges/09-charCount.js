@@ -12,4 +12,14 @@ charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i:
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
 
-export function charCount() {}
+export function charCount(str) {
+    const obj={}
+    const list1 = str.split("")
+    for (const el of list1){
+        if (obj[el])
+            obj[el]++
+        
+        else obj[el] =  1
+    }
+    return obj
+}

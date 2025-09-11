@@ -15,4 +15,6 @@ formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
 
-export function formatWithPadding() {}
+export function formatWithPadding(num,str, len) {
+
+}
