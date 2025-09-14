@@ -9,5 +9,5 @@
 # reverse_upcase_string("SEI Rocks!"); //=> "!SKCOR IES"
 # -----------------------------------------------------------------
 
-def reverse_upcase_string():
-    return
+def reverse_upcase_string(string):
+    return string[::-1].upper()

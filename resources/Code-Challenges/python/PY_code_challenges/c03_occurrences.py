@@ -11,4 +11,8 @@
 # -----------------------------------------------------------------
 
 def occurrences(string, substr):
-    return
+    if string == None or substr == None or substr == "" or string == "":
+        return 0
+    return len(string.split(substr))-1
+
+print(occurrences('fleep floop', 'ee'))
