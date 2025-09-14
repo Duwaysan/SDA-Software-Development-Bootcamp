@@ -14,49 +14,52 @@ SO - we shall check the installation of the following items:
 Let's use the following commands to check the installs:
 
 ## PYTHON3
-### CHECK PYTHON3
-• MAC
-    •• `python3 —version` || `python3 -V`
-• UBUNTU
-    •• `python3 —version` || `python3 -V`
+#### CHECK PYTHON3
+- MAC
+  - `python3 —version` || `python3 -V`
+- UBUNTU
+  - `python3 —version` || `python3 -V`
 
-### INSTALL PYTHON3
-• MAC
-    •• `brew install python`
-• UBUNTU
-    •• `sudo apt update`
-    •• `sudo apt install python3`
+#### INSTALL PYTHON3
+- MAC
+  - `brew install python`
+- UBUNTU
+  - `sudo apt update`
+  - `sudo apt install python3`
 
 	***************
 
 ## PIP3
-### CHECK PIP3
-• MAC
-    •• `pip3 --version` || `pip3 -V`
-• UBUNTU
-    •• `pip3 --version` || `pip3 -V`
+#### CHECK PIP3
+- MAC
+  - `pip3 --version` || `pip3 -V`
+  
+- UBUNTU
+  - `pip3 --version` || `pip3 -V`
 
-### INSTALL PIP3
-• MAC
-    •• `brew install python`
-• UBUNTU
-    •• `sudo apt install python3-pip`
+#### INSTALL PIP3
+- MAC
+  - `brew install python`
+  
+- UBUNTU
+  - `sudo apt install python3-pip`
 
 	***************
 
 ## PIPENV
-### CHECK PIPENV
-• MAC
-    •• `pipenv --version`
-• UBUNTU
-    •• `pipenv --version`
+#### CHECK PIPENV
+- MAC
+  - `pipenv --version`
+- UBUNTU
+  - `pipenv --version`
 
-### INSTALL PIPENV
-• MAC
-    •• `brew install pipenv`
-• UBUNTU
-    •• `pip3 install --user pipenv`
-    •• `export PATH="$HOME/.local/bin:$PATH"` 
-        ••• (request support from teacher if needed)
-    •• `source ~/.bashrc`   # or `source ~/.zshrc`
-    •• `pipenv --version`
+#### INSTALL PIPENV
+- MAC
+  - `brew install pipenv`
+  
+- UBUNTU
+  - `pip3 install --user pipenv`
+  - `export PATH="$HOME/.local/bin:$PATH"` 
+    - (request support from teacher if needed)
+  - `source ~/.bashrc`   # or `source ~/.zshrc`
+  - `pipenv --version`
