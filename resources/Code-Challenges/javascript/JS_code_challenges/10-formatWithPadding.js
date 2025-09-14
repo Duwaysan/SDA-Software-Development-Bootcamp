@@ -16,5 +16,12 @@ formatWithPadding(1234, '*', 3); //=> "1234"
 // Your solution for 10-formatWithPadding here:
 
 export function formatWithPadding(num,str, len) {
+  if (String(num).length>= len )
+    return num
+  return str.repeat(len - String(num).length) + num
 
 }
+// str = "Hi"
+// console.log(str.repeat(2))
+// console.log(formatWithPadding(123, '0', 5))
+// console.log(formatWithPadding(42, '*', 10))
