@@ -22,4 +22,4 @@
 # -----------------------------------------------------------------
 
 def repeat_statement(statement, num):
-    return
+    return (statement+'\n')*(num-1)+statement
