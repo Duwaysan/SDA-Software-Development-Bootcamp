@@ -14,12 +14,13 @@ SO - we shall check the installation of the following items:
 Let's use the following commands to check the installs:
 
 ## PYTHON3
-<<<<<<< HEAD
+
 #### CHECK PYTHON3
 - MAC
   - `python3 —version` || `python3 -V`
 - UBUNTU
   - `python3 —version` || `python3 -V`
+
 
 #### INSTALL PYTHON3
 - MAC
@@ -27,7 +28,7 @@ Let's use the following commands to check the installs:
 - UBUNTU
   - `sudo apt update`
   - `sudo apt install python3`
-=======
+
 ### CHECK PYTHON3
 • MAC
     •• `python3 —version` || `python3 -V`
@@ -40,12 +41,15 @@ Let's use the following commands to check the installs:
 • UBUNTU
     •• `sudo apt update`
     •• `sudo apt install python3`
->>>>>>> 43938d8 (add week 03)
 
-	***************
+#### INSTALL PYTHON3
+- MAC
+  - `brew install python`
+- UBUNTU
+  - `sudo apt update`
+  - `sudo apt install python3`
 
 ## PIP3
-<<<<<<< HEAD
 #### CHECK PIP3
 - MAC
   - `pip3 --version` || `pip3 -V`
@@ -53,13 +57,14 @@ Let's use the following commands to check the installs:
 - UBUNTU
   - `pip3 --version` || `pip3 -V`
 
+
 #### INSTALL PIP3
 - MAC
   - `brew install python`
   
 - UBUNTU
   - `sudo apt install python3-pip`
-=======
+
 ### CHECK PIP3
 • MAC
     •• `pip3 --version` || `pip3 -V`
@@ -71,12 +76,16 @@ Let's use the following commands to check the installs:
     •• `brew install python`
 • UBUNTU
     •• `sudo apt install python3-pip`
->>>>>>> 43938d8 (add week 03)
 
-	***************
+#### INSTALL PIP3
+- MAC
+  - `brew install python`
+  
+- UBUNTU
+  - `sudo apt install python3-pip`
 
 ## PIPENV
-<<<<<<< HEAD
+
 #### CHECK PIPENV
 - MAC
   - `pipenv --version`
@@ -109,4 +118,14 @@ Let's use the following commands to check the installs:
         ••• (request support from teacher if needed)
     •• `source ~/.bashrc`   # or `source ~/.zshrc`
     •• `pipenv --version`
->>>>>>> 43938d8 (add week 03)
+
+#### INSTALL PIPENV
+- MAC
+  - `brew install pipenv`
+  
+- UBUNTU
+  - `pip3 install --user pipenv`
+  - `export PATH="$HOME/.local/bin:$PATH"` 
+    - (request support from teacher if needed)
+  - `source ~/.bashrc`   # or `source ~/.zshrc`
+  - `pipenv --version`
