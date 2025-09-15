@@ -120,7 +120,7 @@ def calculate_dog_years():
     try:
         dog_age = int(dog_age)
         if dog_age <= 2 :
-            calc_age = dog_age*2
+            calc_age = dog_age*10
         else:
             calc_age = 20 + (dog_age-2)*7
     except ValueError:
