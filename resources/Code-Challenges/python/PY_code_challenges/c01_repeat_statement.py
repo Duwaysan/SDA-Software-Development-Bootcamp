@@ -24,6 +24,8 @@
 def repeat_statement(statement, num):
     if num == 0:
         return ""
-    return (statement+'\n')*(num-1)+statement
 
-print(repeat_statement("Hello there", 1))
+    return "\n".join([statement]*num)
+    # return (statement+'\n')*(num-1)+statement
+
+print(repeat_statement("Hello there", 3))

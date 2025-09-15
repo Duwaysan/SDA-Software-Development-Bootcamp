@@ -115,3 +115,5 @@ def filter_foods_with_a():
     return foods_with_an_a
 # Call the function and print the result
 print('Exercise 8:', filter_foods_with_a())
+
+squares = [num*num for num in nums]
