@@ -112,8 +112,7 @@ print('Exercise 5:', sum_to(6))
 # Define your function and test it with different inputs.
 
 def largest(num1, num2, num3):
-    numbers = [num1,num2,num3]
-    return max(numbers)
+    return max([num1,num2,num3])
 
 print('Exercise 6:', largest(1, 2, 3))
 
