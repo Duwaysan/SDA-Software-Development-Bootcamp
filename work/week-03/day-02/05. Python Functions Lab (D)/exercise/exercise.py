@@ -113,8 +113,7 @@ print('Exercise 5:', sum_to(6))
 
 def largest(num1, num2, num3):
     numbers = [num1,num2,num3]
-    numbers.sort()
-    return numbers[-1]
+    return max(numbers)
 
 print('Exercise 6:', largest(1, 2, 3))
 
