@@ -10,4 +10,4 @@
 # -----------------------------------------------------------------
 
 def multiply_by(numbers, factor):
-    return 
+    return [number*factor for number in numbers]
