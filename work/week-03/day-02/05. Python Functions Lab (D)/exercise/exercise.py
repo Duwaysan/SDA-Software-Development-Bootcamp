@@ -149,9 +149,8 @@ print('Exercise 7:', calculate_tip(50, 20))
 def product(*args):
     if not args:
         return 0
-    numbers = list(args)
     total=1 
-    for num in numbers:
+    for num in args:
         total*=num
     return total
 
