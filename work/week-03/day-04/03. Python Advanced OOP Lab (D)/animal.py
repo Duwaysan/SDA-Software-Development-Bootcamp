@@ -1,14 +1,23 @@
 
 class Animal:
 
-
+    
     def __init__(self, name, color,stuff_in_belly = [], position = 0):
         self.name = name
         self.color = color
         self.stuff_in_belly = stuff_in_belly
         self.position = position
+        self.friends = []
         pass
-
+    
+    def make_friends(self, new_friend):
+        if Animal == new_friend.__class__.__bases__ and (new_friend not in self.friends): ##new_friend.__class__.__bases__ returns the parent object
+            self.friends.append(new_friend)
+            new_friend.friends.append(self)
+            print(f"{self.name} and {new_friend.name} are now friends!")
+        else:
+            print(f"{self.name} cannot be friends with {new_friend.name}.:(")
+        pass
     def talk(self,sound=None):
         if not sound:
             print(f"{self.name} has nothing to say right now.")
@@ -36,6 +45,9 @@ class Animal:
         else:
             print(f"{self.name} doesn't want to eat {food} right now.")
 
+    def __str__(self):
+        return f"{self.name} the {self.__class__.__name__}"
+    pass
 class Dog(Animal):
     def talk(self,sound="Bark Bark!"):
         if sound  != "Bark Bark!":
@@ -87,7 +99,35 @@ class Pig(Animal):
         pass
 
     pass
+
+class Chicken(Animal):
+    def __init__(self, name, color, eggs_layed, stuff_in_belly=[], position=0):
+        super().__init__(name, color, stuff_in_belly, position)
+        self.eggs_layed = eggs_layed
+        pass
     
+    def lay_eggs(self,number_of_eggs):
+        self.eggs_layed += number_of_eggs
+        print(f"Number of Layed Eggs: {self.eggs_layed}")
+        pass
+    pass
+
+class Bull(Animal):
+
+    def __init__(self, name, color, stuff_in_belly=[], position=0, things_charged=[]):
+        super().__init__(name, color, stuff_in_belly, position)
+        self.things_charged = things_charged
+        pass
+
+    def charge(self,item):
+        self.things_charged.append(item)
+        print(f"{self.name} has chrged {item}. Wow, he's angry!")
+        if len(self.things_charged)>4:
+            print(f"{self.name} is angry at EVERYTHING. He's very tired now, so instead of charging {item}, he decided to lay down.")
+
+    pass
+
+
 sparky = Dog('Sparky', 'brown', ["dog food", "McDonald's wrapper"])
 dog = Dog("Blitzer", "yellow")
 
@@ -144,4 +184,4 @@ pig.talk('I am so happy!')
 pig.wallow()
 pig.wallow()
 pig.wallow()
-
+print(pig)
