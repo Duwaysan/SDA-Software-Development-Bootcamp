@@ -17,4 +17,7 @@
 # -----------------------------------------------------------------
 
 def format_contacts(contacts):
-    return
+    return " ".join([f"{name} has a phone number of {number}." for name, number in contacts.items()])
+
+# names = {'Brian': '333-333-3333', 'Lenny': '444-444-4444', 'Daniel': '777-777-7777'}
+# print(" ".join([f"{name} has a phone number of {number}." for name, number in names.items()]))

@@ -16,5 +16,11 @@
 # ```
 # -----------------------------------------------------------------
 
-def sort_a_string():
-    return
+def sort_a_string(string):
+    lst = list(string)
+    lst.sort()
+    return ''.join(lst)
+
+# lst = list('supercalifragilisticexpialidocious')
+# lst.sort()
+# print(''.join(lst))

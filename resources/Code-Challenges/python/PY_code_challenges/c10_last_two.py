@@ -9,5 +9,5 @@
 # last_two(["tomatoes"])  => returns: ["tomatoes"]
 # -----------------------------------------------------------------
 
-def last_two():
-    return
+def last_two(lst):
+    return lst[-2:]
