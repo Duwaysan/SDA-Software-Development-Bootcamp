@@ -35,4 +35,18 @@
 # -----------------------------------------------------------------
 
 def student_grade_report(students):
-    return
+    my_strings = []
+    #tried to do it in one line but kinda hard cuz the if statements # [f"{name}: Average = {sum(scores)/len(scores)}, High = {max(scores)}, Low = {min(scores)}, Grade = {}" for name, scores in students:]
+    # if students:
+    avg = 0.0
+    highest = None
+    lowest = None
+    for name, scores in students.items():
+        if len(scores):
+            avg = round(sum(scores)/len(scores),2)
+            highest = max(scores)
+            lowest = min(scores)
+        grade = 'A' if avg >= 90 else ('B' if avg >= 80 else ('C' if avg >= 70 else ('D' if avg >= 60 else 'F'))) # I like doing one lines ×_×
+        my_strings.append(f"{name}: Average = {avg}, High = {highest}, Low = {lowest}, Grade = {grade}")
+
+    return "\n".join(my_strings)
