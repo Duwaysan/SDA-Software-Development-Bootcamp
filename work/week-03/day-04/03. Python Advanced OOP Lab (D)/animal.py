@@ -76,6 +76,7 @@ class Sheep(Animal):
     def shear(self):
         if not self.is_shorn:
             print(f"{ self.name } is now naked, and you have a basket of wool.")
+            self.is_shorn = True
         else: print(f"{self.name} has already been shorn!!")
     pass
 
@@ -92,10 +93,11 @@ class Pig(Animal):
         pass
     
     def wallow(self): 
-        self.filthiness += 1
-        print(f"{self.name} rolled in the muck and is now at filthiness level {self.filthiness}.")
         if self.filthiness>= 5:
             print(f"{self.name} is already as dirty as a li'l piggy could possible be!")
+        else: 
+            self.filthiness += 1
+            print(f"{self.name} rolled in the muck and is now at filthiness level {self.filthiness}.")
         pass
 
     pass
@@ -120,10 +122,11 @@ class Bull(Animal):
         pass
 
     def charge(self,item):
-        self.things_charged.append(item)
-        print(f"{self.name} has chrged {item}. Wow, he's angry!")
         if len(self.things_charged)>4:
             print(f"{self.name} is angry at EVERYTHING. He's very tired now, so instead of charging {item}, he decided to lay down.")
+        else: 
+            self.things_charged.append(item)
+            print(f"{self.name} has chrged {item}. Wow, he's angry!")
 
     pass
 
@@ -155,6 +158,7 @@ if dog.is_hungry:
     print("He's still hungry!")
 else:
     print("He's stuffed!")
+
 
 # Feed the dog some more
 dog.eat('bugs')
