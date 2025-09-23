@@ -27,4 +27,23 @@
 # -----------------------------------------------------------------
 
 def merge_intervals(intervals):
-    return
+    
+    if not len(intervals):
+        return []
+    intervals.sort()
+    start = intervals[0][0]
+    end = intervals[0][1]
+    new_intervals = []
+    for i in range(1,len(intervals)):
+        # if end >= intervals[i][0]:
+        new_start = intervals[i][0]
+        new_end = intervals[i][1]
+        if new_start<= end: 
+            end = max(end,intervals[i][1])
+        else:
+            new_intervals.append([start,end])
+            start = new_start
+            end = new_end
+    new_intervals.append([start,end])
+    return new_intervals
+

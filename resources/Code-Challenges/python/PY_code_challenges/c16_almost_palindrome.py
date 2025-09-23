@@ -20,4 +20,15 @@
 # -----------------------------------------------------------------
 
 def almost_palindrome(s):
-    return
+    # i would do a palindrom function first then make it check if the string is almost 
+    s = s.replace(",", "").replace(" ", "").lower() #normalizing the string
+    if is_palindrome(s):
+        return True
+    for i in range(len(s)):
+        if is_palindrome(s[:i] + s[i+1:]):
+            return True
+    
+    return False
+
+def is_palindrome(s):
+    return s == s[::-1] 
