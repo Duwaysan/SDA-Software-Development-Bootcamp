@@ -19,4 +19,19 @@
 # -----------------------------------------------------------------
 
 def compress_string(s):
-    return
+    if s == "":
+        return ""
+    i = 0
+    result = ""
+    while i < len(s):
+        count = 1
+        j = i + 1
+        while j < len(s) and s[j] == s[i]:
+            count = count + 1
+            j = j + 1
+        if count > 1:
+            result = result + s[i] + str(count)
+        else:
+            result = result + s[i]
+        i = j
+    return result

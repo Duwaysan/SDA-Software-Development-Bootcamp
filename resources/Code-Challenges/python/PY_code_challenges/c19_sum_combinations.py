@@ -24,5 +24,26 @@
 # - Make sure to check the current sum at each step and prune paths that exceed the target.
 # -----------------------------------------------------------------
 
-def sum_combinations(numbers, target):
-    return
+def sum_combinations(numbers, target, start=0, path=None):
+        if path is None:
+            path = []
+        results = []
+
+        if target == 0:
+            return [path[:]]
+        if target < 0:
+            return []
+
+        prev = None
+        for i in range(start, len(numbers)):
+            if prev is not None and numbers[i] == prev:
+                continue
+            if numbers[i] > target:
+                break
+                #here looping on recursion return
+            for combo in sum_combinations(numbers, target - numbers[i], i + 1, path + [numbers[i]]):
+                results.append(combo)
+
+            prev = numbers[i]
+
+        return results
