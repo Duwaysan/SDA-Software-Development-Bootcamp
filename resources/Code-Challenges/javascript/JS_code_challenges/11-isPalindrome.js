@@ -14,4 +14,13 @@ isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
 
-export function isPalindrome() {}
+export function isPalindrome(str) { 
+    // Normalize the string: remove spaces and convert to lowercase
+    str = str.replaceAll(" ", "").toLowerCase();
+    for (let i = 0; i < str.length / 2; i++) {
+        if (str[i] !== str[str.length - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
+}

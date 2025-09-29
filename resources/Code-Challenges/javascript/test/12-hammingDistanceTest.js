@@ -15,3 +15,4 @@ describe("12-hammingDistance", function () {
         expect(hammingDistance('!!!!', '****')).to.equal(4);
     });
 });
+
