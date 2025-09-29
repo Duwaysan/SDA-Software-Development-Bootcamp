@@ -11,4 +11,18 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sal
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
 
-export function fromPairs() {}
+export function fromPairs(pairs) {
+    const obj = {};
+    // assign item to object
+    for (let i = 0; i < pairs.length; i++) {
+        const key = pairs[i][0];
+        const value = pairs[i][1];
+        obj[key] = value; 
+    }
+    return obj;
+
+
+
+
+
+}
