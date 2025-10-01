@@ -37,4 +37,3 @@ JOIN users_movies um ON u.user_id = um.user_id
 JOIN movies m ON m.movie_id = um.movie_id
 JOIN directors d ON m.director_id = d.director_id
 GROUP BY u.name, d.name
-ORDER BY favorite_count DESC;
