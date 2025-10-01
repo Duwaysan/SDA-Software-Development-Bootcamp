@@ -4,10 +4,19 @@
 \x on
 
 --3.1 Select all warehouses.
+SELECT * FROM Warehouses;
 --3.2 Select all boxes with a value larger than $150.
+SELECT *  FROM Boxes
+WHERE Value > 150;
 --3.3 Select all distinct contents in all the boxes.
+SELECT DISTINCT * FROM Boxes;
+
 --3.4 Select the average value of all the boxes.
+SELECT AVG(Value) FROM Boxes;
 --3.5 Select the warehouse code and the average value of the boxes in each warehouse.
+SELECT Warehouses.code, AVG(Value) FROM Boxes
+JOIN Warehouses ON Warehouses.Code = Boxes.Warehouse
+GROUP BY Warehouses.code
 --3.6 Same as previous exercise, but select only those warehouses where the average value of the boxes is greater than 150.
 --3.7 Select the code of each box, along with the name of the city the box is located in.
 --3.8 Select the warehouse codes, along with the number of boxes in each warehouse.
