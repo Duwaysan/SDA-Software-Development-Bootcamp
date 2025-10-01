@@ -11,4 +11,13 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c:
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
 
-export function mergeObjects() {}
+export function mergeObjects(...objects) {
+    const target = objects[0]; //in case the arguments is less than 2
+  for (const obj of objects) {
+    Object.keys(obj).forEach(key => {
+      target[key] = obj[key]; 
+    });
+  }
+  return target;
+
+}

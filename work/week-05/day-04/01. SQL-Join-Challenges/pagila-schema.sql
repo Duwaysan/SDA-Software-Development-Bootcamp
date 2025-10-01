@@ -15,14 +15,14 @@ CREATE TYPE mpaa_rating AS ENUM (
     'R',
     'NC-17'
 );
-ALTER TYPE mpaa_rating OWNER TO postgres;
+ALTER TYPE mpaa_rating OWNER TO duwaysan;
 
 --
 -- Name: year; Type: DOMAIN
 --
 CREATE DOMAIN year AS integer
 	CONSTRAINT year_check CHECK (((VALUE >= 1901) AND (VALUE <= 2155)));
-ALTER DOMAIN year OWNER TO postgres;
+ALTER DOMAIN year OWNER TO duwaysan;
 
 --
 -- Name: customer_customer_id_seq; Type: SEQUENCE
@@ -33,7 +33,7 @@ CREATE SEQUENCE customer_customer_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE customer_customer_id_seq OWNER TO postgres;
+ALTER TABLE customer_customer_id_seq OWNER TO duwaysan;
 
 SET default_tablespace = '';
 SET default_with_oids = false;
@@ -53,7 +53,7 @@ CREATE TABLE customer (
     last_update timestamp with time zone DEFAULT now(),
     active integer
 );
-ALTER TABLE customer OWNER TO postgres;
+ALTER TABLE customer OWNER TO duwaysan;
 
 --
 -- Name: actor_actor_id_seq; Type: SEQUENCE
@@ -64,7 +64,7 @@ CREATE SEQUENCE actor_actor_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE actor_actor_id_seq OWNER TO postgres;
+ALTER TABLE actor_actor_id_seq OWNER TO duwaysan;
 
 --
 -- Name: actor; Type: TABLE
@@ -75,7 +75,7 @@ CREATE TABLE actor (
     last_name text NOT NULL,
     last_update timestamp with time zone DEFAULT now() NOT NULL
 );
-ALTER TABLE actor OWNER TO postgres;
+ALTER TABLE actor OWNER TO duwaysan;
 
 --
 -- Name: category_category_id_seq; Type: SEQUENCE
@@ -86,7 +86,7 @@ CREATE SEQUENCE category_category_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE category_category_id_seq OWNER TO postgres;
+ALTER TABLE category_category_id_seq OWNER TO duwaysan;
 
 --
 -- Name: category; Type: TABLE
@@ -96,7 +96,7 @@ CREATE TABLE category (
     name text NOT NULL,
     last_update timestamp with time zone DEFAULT now() NOT NULL
 );
-ALTER TABLE category OWNER TO postgres;
+ALTER TABLE category OWNER TO duwaysan;
 
 --
 -- Name: film_film_id_seq; Type: SEQUENCE
@@ -107,7 +107,7 @@ CREATE SEQUENCE film_film_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE film_film_id_seq OWNER TO postgres;
+ALTER TABLE film_film_id_seq OWNER TO duwaysan;
 
 --
 -- Name: film; Type: TABLE
@@ -128,7 +128,7 @@ CREATE TABLE film (
     special_features text[],
     fulltext tsvector NOT NULL
 );
-ALTER TABLE film OWNER TO postgres;
+ALTER TABLE film OWNER TO duwaysan;
 
 --
 -- Name: film_actor; Type: TABLE
@@ -138,7 +138,7 @@ CREATE TABLE film_actor (
     film_id smallint NOT NULL,
     last_update timestamp with time zone DEFAULT now() NOT NULL
 );
-ALTER TABLE film_actor OWNER TO postgres;
+ALTER TABLE film_actor OWNER TO duwaysan;
 
 --
 -- Name: film_category; Type: TABLE
@@ -148,7 +148,7 @@ CREATE TABLE film_category (
     category_id smallint NOT NULL,
     last_update timestamp with time zone DEFAULT now() NOT NULL
 );
-ALTER TABLE film_category OWNER TO postgres;
+ALTER TABLE film_category OWNER TO duwaysan;
 
 --
 -- Name: address_address_id_seq; Type: SEQUENCE
@@ -159,7 +159,7 @@ CREATE SEQUENCE address_address_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE address_address_id_seq OWNER TO postgres;
+ALTER TABLE address_address_id_seq OWNER TO duwaysan;
 
 --
 -- Name: address; Type: TABLE
@@ -174,7 +174,7 @@ CREATE TABLE address (
     phone text NOT NULL,
     last_update timestamp with time zone DEFAULT now() NOT NULL
 );
-ALTER TABLE address OWNER TO postgres;
+ALTER TABLE address OWNER TO duwaysan;
 
 --
 -- Name: city_city_id_seq; Type: SEQUENCE
@@ -185,7 +185,7 @@ CREATE SEQUENCE city_city_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE city_city_id_seq OWNER TO postgres;
+ALTER TABLE city_city_id_seq OWNER TO duwaysan;
 
 --
 -- Name: city; Type: TABLE
@@ -196,7 +196,7 @@ CREATE TABLE city (
     country_id smallint NOT NULL,
     last_update timestamp with time zone DEFAULT now() NOT NULL
 );
-ALTER TABLE city OWNER TO postgres;
+ALTER TABLE city OWNER TO duwaysan;
 
 --
 -- Name: country_country_id_seq; Type: SEQUENCE
@@ -207,7 +207,7 @@ CREATE SEQUENCE country_country_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE country_country_id_seq OWNER TO postgres;
+ALTER TABLE country_country_id_seq OWNER TO duwaysan;
 
 --
 -- Name: country; Type: TABLE
@@ -217,7 +217,7 @@ CREATE TABLE country (
     country text NOT NULL,
     last_update timestamp with time zone DEFAULT now() NOT NULL
 );
-ALTER TABLE country OWNER TO postgres;
+ALTER TABLE country OWNER TO duwaysan;
 
 --
 -- Name: inventory_inventory_id_seq; Type: SEQUENCE
@@ -228,7 +228,7 @@ CREATE SEQUENCE inventory_inventory_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE inventory_inventory_id_seq OWNER TO postgres;
+ALTER TABLE inventory_inventory_id_seq OWNER TO duwaysan;
 
 --
 -- Name: inventory; Type: TABLE
@@ -239,7 +239,7 @@ CREATE TABLE inventory (
     store_id smallint NOT NULL,
     last_update timestamp with time zone DEFAULT now() NOT NULL
 );
-ALTER TABLE inventory OWNER TO postgres;
+ALTER TABLE inventory OWNER TO duwaysan;
 
 --
 -- Name: language_language_id_seq; Type: SEQUENCE
@@ -250,7 +250,7 @@ CREATE SEQUENCE language_language_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE language_language_id_seq OWNER TO postgres;
+ALTER TABLE language_language_id_seq OWNER TO duwaysan;
 
 --
 -- Name: language; Type: TABLE
@@ -260,7 +260,7 @@ CREATE TABLE language (
     name character(20) NOT NULL,
     last_update timestamp with time zone DEFAULT now() NOT NULL
 );
-ALTER TABLE language OWNER TO postgres;
+ALTER TABLE language OWNER TO duwaysan;
 
 
 --
@@ -272,7 +272,7 @@ CREATE SEQUENCE rental_rental_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE rental_rental_id_seq OWNER TO postgres;
+ALTER TABLE rental_rental_id_seq OWNER TO duwaysan;
 
 --
 -- Name: rental; Type: TABLE
@@ -286,7 +286,7 @@ CREATE TABLE rental (
     staff_id smallint NOT NULL,
     last_update timestamp with time zone DEFAULT now() NOT NULL
 );
-ALTER TABLE rental OWNER TO postgres;
+ALTER TABLE rental OWNER TO duwaysan;
 
 --
 -- Name: staff_staff_id_seq; Type: SEQUENCE
@@ -297,7 +297,7 @@ CREATE SEQUENCE staff_staff_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE staff_staff_id_seq OWNER TO postgres;
+ALTER TABLE staff_staff_id_seq OWNER TO duwaysan;
 
 --
 -- Name: staff; Type: TABLE
@@ -315,7 +315,7 @@ CREATE TABLE staff (
     last_update timestamp with time zone DEFAULT now() NOT NULL,
     picture bytea
 );
-ALTER TABLE staff OWNER TO postgres;
+ALTER TABLE staff OWNER TO duwaysan;
 
 --
 -- Name: store_store_id_seq; Type: SEQUENCE
@@ -326,7 +326,7 @@ CREATE SEQUENCE store_store_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE store_store_id_seq OWNER TO postgres;
+ALTER TABLE store_store_id_seq OWNER TO duwaysan;
 
 --
 -- Name: store; Type: TABLE
@@ -337,7 +337,7 @@ CREATE TABLE store (
     address_id smallint NOT NULL,
     last_update timestamp with time zone DEFAULT now() NOT NULL
 );
-ALTER TABLE store OWNER TO postgres;
+ALTER TABLE store OWNER TO duwaysan;
 
 --
 -- Name: actor actor_pkey; Type: CONSTRAINT (PK)

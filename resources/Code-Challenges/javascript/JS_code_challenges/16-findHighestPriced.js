@@ -26,4 +26,13 @@ findHighestPriced([
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
 
-export function findHighestPriced() {}
+export function findHighestPriced(list) {
+    if (list.length === 0) return null; // Handle empty array case
+    let highestPricedItem = list[0]; // Start by assuming the first item is the highest
+    for (let i = 1; i < list.length; i++) {
+        if (list[i].price > highestPricedItem.price) {
+            highestPricedItem = list[i]; // Update if current item has a higher price
+        }
+    }
+    return highestPricedItem; // Return the object with the highest price found
+}
