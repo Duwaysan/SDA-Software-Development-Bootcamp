@@ -24,4 +24,13 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
 
-export function reduceArray() {}
+export function reduceArray(arr, funct, initial) {
+  let acc = initial;
+  for (let i = 0; i < arr.length; i++) 
+    if (i === 0) 
+      acc = funct(initial, arr[i], i);
+    else 
+      acc = funct(acc, arr[i], i);
+    
+  return acc; //last iteration return mohahahaha
+}

@@ -18,4 +18,10 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
 
-export function mapArray() {}
+export function mapArray(array, funct) {
+  const result = [];
+  for (let i = 0; i< array.length; i++){
+    result.push(funct(array[i], i));
+  }
+  return result;
+}
