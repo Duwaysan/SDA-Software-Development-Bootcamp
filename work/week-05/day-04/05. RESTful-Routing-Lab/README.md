@@ -55,7 +55,7 @@ Use the table below as an example / starting point to generate your routing tabl
     </thead>
     <tbody>
         <tr><td>Students</td><td>GET</td><td>/Students</td><td>No</td></tr>
-        <tr><td>Students</td><td>GET</td><td>/Students/Instructor_id</td><td>No</td></tr>
+        <tr><td>Students</td><td>GET</td><td>/Students/Student_id</td><td>No</td></tr>
         <tr><td>Students</td><td>POST</td><td>/Students</td><td>Yes</td></tr>
         <tr><td>Students</td><td>PUT</td><td>/Students/student_id</td><td>Yes</td></tr>
         <tr><td>Students</td><td>DELETE</td><td>/Students/student_id</td><td>No</td></tr>
@@ -113,11 +113,29 @@ Use the table below as an example / starting point to generate your routing tabl
     <tbody>
         <tr><td>Courses</td><td>GET</td><td>/Courses</td><td>No</td></tr>
         <tr><td>Courses</td><td>GET</td><td>/Courses/Courses_id</td><td>No</td></tr>
-        <tr><td>Courses</td><td>POST</td><td>/Instructors/Courses</td><td>Yes</td></tr>
+        <tr><td>Courses</td><td>POST</td><td>/Courses</td><td>Yes</td></tr>
         <tr><td>Courses</td><td>PUT</td><td>/Courses/Course_id</td><td>Yes</td></tr>
         <tr><td>Courses</td><td>DELETE</td><td>/Courses/Course_id</td><td>No</td></tr>
     </tbody>
 </table>
 
+
+### Student-Course/Instructor-Course
+<table border="1" width="100%">
+    <thead>
+        <tr>
+            <th width="15%">Entity</th>
+            <th width="25%">HTTP Method</th>
+            <th width="50%">Endpoint</th>
+            <th width="10%">Payload Required?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Courses, Students</td><td>POST</td><td>/Student/Student_id/Courses/Course_id</td><td>Yes</td></tr>
+        <tr><td>Courses, Instructors</td><td>POST</td><td>Instructors/Instructor_id/Courses/Courses_id</td><td>Yes</td></tr>
+        <tr><td>Courses, Students</td><td>DELETE</td><td>/Student/Student_id/Courses/Course_id</td><td>Yes</td></tr>
+        <tr><td>Courses, Instructors</td><td>DELETE</td><td>Instructors/Instructor_id/Courses/Courses_id</td><td>Yes</td></tr>
+    </tbody>
+</table>
 
 
