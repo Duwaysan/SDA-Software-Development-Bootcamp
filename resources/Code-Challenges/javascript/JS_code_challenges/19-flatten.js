@@ -17,4 +17,14 @@ flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 -----------------------------------------------------------------*/
 // Your solution for 19-flatten here:
 
-export function flatten() {}
+export function flatten(arr) {
+    // i think it must be recursion in order to handle the nesting
+    const result = [];
+    for (let i = 0; i < arr.length; i++) 
+      if (Array.isArray(arr[i])) 
+        result.push(flatten(arr[i]));
+     else
+        result.push(arr[i]);
+    return result;
+
+}

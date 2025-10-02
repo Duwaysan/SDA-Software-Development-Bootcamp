@@ -13,4 +13,10 @@ isPrime(200) //=> false
 -----------------------------------------------------------------*/
 // Your solution for 20-isPrime here:
 
-export function isPrime() {}
+export function isPrime(num) {
+    if (num <= 1 || !Number.isInteger(num)) return false;
+    for (let i = 2; i < num; i++) 
+      if (num % i === 0) return false;
+
+    return true;
+}
