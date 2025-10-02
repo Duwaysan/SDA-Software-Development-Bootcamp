@@ -73,3 +73,4 @@ SELECT indexname, indexdef FROM pg_indexes WHERE tablename = 'boxes';
 -- 3.18 Remove (drop) the index you added just now
 -- !!!NOTE!!!: index should NOT be used on small tables in practice
 DROP INDEX idx_warehouse;
+-- HEHEHEHEE
