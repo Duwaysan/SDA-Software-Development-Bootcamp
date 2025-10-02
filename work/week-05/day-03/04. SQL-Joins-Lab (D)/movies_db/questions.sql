@@ -16,16 +16,17 @@ JOIN users u ON u.user_id = um.user_id;
 -- 3. List the movies with the number of favorites they have.
 
 SELECT m.title, COUNT(um.user_id) AS favorite_count FROM movies m
-JOIN users_movies um ON m.movie_id = um.movie_id
-JOIN users u ON u.user_id = um.user_id
-GROUP BY m.title;
+FULL OUTER JOIN users_movies um ON m.movie_id = um.movie_id
+FULL OUTER JOIN users u ON u.user_id = um.user_id
+GROUP BY m.title
+ORDER BY favorite_count DESC;
 
 -- 4. List the names of directors along with the number of favorites that exist for all of the movies they've made, ordered by number of favorites descending.
 
 SELECT d.name AS directorname, COUNT(um.user_id) AS favorite_count FROM directors d
-JOIN movies m ON m.director_id = d.director_id
-JOIN users_movies um ON m.movie_id = um.movie_id
-JOIN users u ON u.user_id = um.user_id
+FULL OUTER JOIN movies m ON m.director_id = d.director_id
+FULL OUTER JOIN users_movies um ON m.movie_id = um.movie_id
+FULL OUTER JOIN users u ON u.user_id = um.user_id
 GROUP BY d.name
 ORDER BY favorite_count DESC;
 
