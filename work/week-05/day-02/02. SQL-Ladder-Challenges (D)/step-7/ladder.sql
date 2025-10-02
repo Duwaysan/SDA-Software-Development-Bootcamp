@@ -1,5 +1,8 @@
 \connect ladder
 
+DROP TABLE IF EXISTS Has_Clearance CASCADE;
+DROP TABLE IF EXISTS Client CASCADE;
+DROP TABLE IF EXISTS Package CASCADE;
 DROP TABLE IF EXISTS Employee CASCADE;
 DROP TABLE IF EXISTS Planet CASCADE;
 DROP TABLE IF EXISTS Shipment CASCADE;
@@ -64,7 +67,7 @@ CREATE TABLE Package
 INSERT INTO Client
 VALUES (1, 'Zapp Brannigan');
 INSERT INTO Client
-VALUES (2, "Al Gore's Head");
+VALUES (2, 'Al Gores Head');
 INSERT INTO Client
 VALUES (3, 'Barbados Slim');
 INSERT INTO Client

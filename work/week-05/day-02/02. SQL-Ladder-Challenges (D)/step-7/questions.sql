@@ -5,4 +5,10 @@
 
 -- 7.1 Who received a 1.5kg package?
 -- The result is "Al Gore's Head".
+SELECT C.Name FROM Package P
+JOIN Client C ON P.Recipient = C.AccountNumber
+WHERE P.Weight = 1.5;
 -- 7.2 What is the total weight of all the packages that he sent?
+SELECT SUM(P.Weight) FROM Package P
+JOIN Client C ON P.Sender = C.AccountNumber
+WHERE C.Name = 'Al Gores Head';
