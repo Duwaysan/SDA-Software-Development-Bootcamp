@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 \connect movies_lab_db;
 \x on
+=======
+\connect movies_joins_lab;
+
+>>>>>>> 0f3010ecc750bdce3b45cde37f3d861638a33234
 -- Test query!!
 -- SELECT * FROM users;
 
