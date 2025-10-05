@@ -14,4 +14,17 @@ intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 -----------------------------------------------------------------*/
 // Your solution for 22-intersection here:
 
-export function intersection() {}
+export function intersection(arr1, arr2) {
+    const result = [];
+    const arr2Copy = [...arr2]; //create a copy of arr2 to avoid changing it
+
+    for (const element of arr1) {
+        const index = arr2Copy.indexOf(element);
+        if (index !== -1) {
+            result.push(element);
+            arr2Copy.splice(index, 1); 
+        }
+    }
+
+    return result;
+}
