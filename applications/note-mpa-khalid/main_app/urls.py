@@ -5,4 +5,5 @@ urlpatterns = [
     # Routes will be added here
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),  
+    path('notes/', views.note_index, name='note-index'),
 ]

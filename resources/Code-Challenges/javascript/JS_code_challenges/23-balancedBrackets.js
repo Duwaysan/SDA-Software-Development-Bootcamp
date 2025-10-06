@@ -15,4 +15,24 @@ balancedBrackets( '[({}[])]' ) // => true
 -----------------------------------------------------------------*/
 // Your solution for 23-balancedBrackets here:
 
-export function balancedBrackets() {}
+export function balancedBrackets(str) {
+    const brackets = [];
+    const openBrackets = ['(', '[', '{'];
+    const closeBrackets = [')', ']', '}'];
+    const matches = {
+        ')': '(',
+        ']': '[',
+        '}': '{'
+    };
+    
+    for (let char of str) 
+        if (openBrackets.includes(char)) 
+            brackets.push(char);
+        else if (closeBrackets.includes(char)) {
+            if (brackets.length === 0 || brackets[brackets.length - 1] !== matches[char]) 
+                return false;
+            brackets.pop();
+        }
+    
+    return brackets.length === 0;
+}
