@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/notes/note-detail.css' %}" />
+{% endblock %}
+{% block content %}
+<section class="note-container">
+	<div class="note-img">
+		<img src="{% static 'assets/book.png' %}" alt="A book" />
+	</div>
+	<div class="note-details">
+		<h1>{{ note.title }}</h1>
+		<h2>Content: {{ note.content }}.</h2>
+		<h2>Created on {{ note.date }}</h2>
+		<div class="cat-actions">
+			<a href="{% url 'note-update' note.id %}" class="btn warn">Edit</a>
+			<a href="{% url 'note-delete' note.id %}" class="btn danger">Delete</a>
+		</div>
+	</div>
+</section>
+{% endblock %}

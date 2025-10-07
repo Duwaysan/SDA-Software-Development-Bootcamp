@@ -5,25 +5,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/Notes_logo.jpeg' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/notelogo.png' %}"/>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    <title>
-        {% block title %} 
-        {% endblock %}
-    </title>
-
+    {% block head %} 
+    {% endblock %}
+    <title>Note App</title>
   </head>
   <body>
     <header>
       <div class="header-logo-container">
         <a href="/">
-          <img id='main-logo' src="{% static 'assets/Notes_logo.jpeg' %}" alt="Notes Logo" />
+          <div class="logo-wrapper">
+          <img class='main-logo' src="{% static 'assets/notelogo.png' %}" alt="Notes Logo" />
+          <img class='main-logo' src="{% static 'assets/notetypelogo.png' %}" alt="notes type ">
+        </div>
         </a>
       </div>
       <nav>
         <ul>
-            <li><a href="/notes">All Notes</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="{% url 'note-index' %}">All Notes</a></li>
+            <li><a href="{% url 'note-create' %}">Add a Note</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
         </ul>
       </nav>
     </header>

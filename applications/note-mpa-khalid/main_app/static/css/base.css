@@ -1,5 +1,4 @@
 /* static/css/base.css  */
-
 html {
   box-sizing: border-box;
 }
@@ -29,9 +28,9 @@ body {
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
   min-height: 100vh;
-  --nav-bg: rgba(104, 197, 248, 0.7);
-  --nav-bg-ff: rgba(104, 197, 248, 0.9);
-  --borders: rgb(36, 116, 248) solid 2px;
+  --nav-bg: rgba(245, 207, 83, 0.7);
+  --nav-bg-ff: rgba(245, 207, 83, 0.9);
+  --borders: rgb(199, 168, 67) solid 2px;
   --text-color: rgb(17, 20, 17);
   --link-hover-color: rgb(16, 56, 158);
   --button-bg: rgb(245, 245, 245);
@@ -151,6 +150,7 @@ nav li {
   margin: 0;
 }
 
+
 .page-header img {
   height: 40px;
   margin-left: 15px;
@@ -216,10 +216,6 @@ nav li {
     margin-left: 25px;
   }
 
-  #main-logo {
-    height: 25px;
-    
-  }
 
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     header {
@@ -239,17 +235,24 @@ nav li {
     margin: 20px 20px 0 20px;
     width: calc(100vw - 40px);
     max-width: 1920px;
+    height: 70px;
     top: 20px;
     background-color: transparent;
     border-bottom: none;
   }
 
-  nav,
-  .header-logo-container {
+  nav{
+    padding: 0;
     margin: 0;
+    height: 100%;
     background: var(--nav-bg-ff);
     border: var(--borders);
     border-radius: 18px;
+  }
+  .main-logo{
+    height: 50px;
+    width: auto;
+    /* center it */
   }
 
   nav {
@@ -258,10 +261,16 @@ nav li {
 
   .header-logo-container {
     /* visual fix to help align logo */
+    display: flex;
     padding-top: 6px;
     width: 256px;
     height: 35px;
   }
+  .logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between the images */
+}
 
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     header {
@@ -269,11 +278,5 @@ nav li {
       backdrop-filter: none;
     }
 
-    nav,
-    .header-logo-container {
-      background: rgba(104, 197, 248, 0.6);
-      -webkit-backdrop-filter: blur(3px);
-      backdrop-filter: blur(3px);
-    }
   }
 }
