@@ -57,6 +57,12 @@ class Note(models.Model):
             # Use the 'reverse' function to dynamically find the URL for viewing this cat's details
             return reverse('note-detail', kwargs={'note_id': self.id})
         
+class Pin(models.Model):
+    pass
+
+    def __str__(self):
+        return f"Photo for cat_id: {self.cat.id} @{self.url}"
+    
 
 class Checklist(models.Model):
     text = models.CharField(max_length=255)
