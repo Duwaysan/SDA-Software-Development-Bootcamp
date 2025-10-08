@@ -3,15 +3,15 @@
 {% block content %}
 
 <div class="page-header">
-  <h1>Delete Note?</h1>
+  <h1>Delete Checklist?</h1>
   <img src="{% static 'assets/diary.png' %}" alt="A cat using a computer" />
 </div>
 
-<h2>Are you sure you want to delete {{ note.title }}?</h2>
+<h2>Are you sure you want to delete {{ checklist.text }}?</h2>
 
 <form action="" method="post" class="form">
   {% csrf_token %}
-  <a href="{% url 'note-detail' note.id %}" class="btn secondary">Cancel</a>
+  <a href="{% url 'note-detail' checklist.note.id %}" class="btn secondary">Cancel</a>
   <button type="submit" class="btn danger">Yes - Delete!</button>
 </form>
 

@@ -11,6 +11,7 @@ urlpatterns = [
     path('notes/<int:pk>/update/', views.NoteUpdate.as_view(), name='note-update'),
     path('notes/<int:pk>/delete/', views.NoteDelete.as_view(), name='note-delete'),
     path('notes/<int:note_id>/add-checklist/', views.add_checklist, name='add-checklist'),
+    path('checklist/<int:pk>/delete/', views.ChecklistDelete.as_view(), name='checklist-item-delete'),
     path('checklist/<int:checklist_id>/update-completion/', views.update_completion, name='update-completion'),  # New route for updating checklist completion
 
 ]

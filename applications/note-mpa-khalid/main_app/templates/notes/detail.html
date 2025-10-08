@@ -38,6 +38,7 @@
 				<tr>
 					<th>Text</th>
 					<th>Complete</th>
+					<th>Edit</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -54,20 +55,27 @@
 							</button>
 						</form>
 					</td>
+					<td>
+						<a href="{% url 'checklist-item-delete' checklist.id %}" class="btn danger">Delete</a>
+					</td>
+
 				</tr>
 				{% endif %}
 				{% if not checklist.is_done %}
 				<tr>
 					<td>{{checklist.text}}</td>
 					<td>
-						<form action="/checklist/{{ checklist.id }}/update-completion/" method="put" class="subsection-content"
-							autocomplete="off">
+						<form action="/checklist/{{ checklist.id }}/update-completion/" method="put"
+							class="subsection-content" autocomplete="off">
 							{% csrf_token %}
 							<button class="check-button" type="submit" class="btn submit">
-								<img class="checking-icon" src="{% static 'assets/unchecked.png' %}" alt="unchecked icon">
+								<img class="checking-icon" src="{% static 'assets/unchecked.png' %}"
+									alt="unchecked icon">
 							</button>
 						</form>
-						
+					</td>
+					<td>
+							<a href="{% url 'checklist-item-delete' checklist.id %}" class="btn danger">Delete</a>
 					</td>
 				</tr>
 				{% endif %}
