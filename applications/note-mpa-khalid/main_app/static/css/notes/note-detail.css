@@ -228,3 +228,8 @@
     height: 20px;
     cursor: pointer;
 }
+/* remove background button */
+.check-button {
+  background: none;
+  border: none;
+}

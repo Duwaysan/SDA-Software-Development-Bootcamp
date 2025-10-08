@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Note
+from .models import Note, Checklist
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .forms import ChecklistForm
 
@@ -48,3 +48,11 @@ class NoteDelete(DeleteView):
     success_url = '/notes/'
 
     
+def update_completion(request, checklist_id):
+    # create a ModelForm instance using the data in request.POST
+    checklist = Checklist.objects.get(id=checklist_id)
+    print("checklist status", checklist.is_done, "checklist note id: ", checklist.note.id)
+    checklist.is_done = not checklist.is_done
+    checklist.save()
+    note_id = checklist.note.id
+    return redirect('note-detail', note_id=note_id)

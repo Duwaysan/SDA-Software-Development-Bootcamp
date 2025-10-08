@@ -32,6 +32,7 @@
 			{{ checklist_form.as_p }}
 			<button type="submit" class="btn submit">Add Checklist</button>
 		</form>
+		{% if note.checklist_set.count != 0 %}
 		<table>
 			<thead>
 				<tr>
@@ -44,18 +45,39 @@
 				{% if checklist.is_done %}
 				<tr>
 					<td>{{checklist.text}}</td>
-					<td><img class="checking-icon" src="{% static 'assets/checked.png' %}" alt="checked icon"></td>
+					<td>
+						<form action="/checklist/{{ checklist.id }}/update-completion/" method="put"
+							class="subsection-content" autocomplete="off">
+							{% csrf_token %}
+							<button class="check-button" type="submit" class="btn submit">
+								<img class="checking-icon" src="{% static 'assets/checked.png' %}" alt="checked icon">
+							</button>
+						</form>
+					</td>
 				</tr>
 				{% endif %}
 				{% if not checklist.is_done %}
 				<tr>
 					<td>{{checklist.text}}</td>
-					<td><img class="checking-icon" src="{% static 'assets/unchecked.png' %}" alt="unchecked icon"></td>
+					<td>
+						<form action="/checklist/{{ checklist.id }}/update-completion/" method="put" class="subsection-content"
+							autocomplete="off">
+							{% csrf_token %}
+							<button class="check-button" type="submit" class="btn submit">
+								<img class="checking-icon" src="{% static 'assets/unchecked.png' %}" alt="unchecked icon">
+							</button>
+						</form>
+						
+					</td>
 				</tr>
 				{% endif %}
 				{% endfor %}
 			</tbody>
 		</table>
+		{% endif %}
+		{% if note.checklist_set.count == 0 %}
+		<h3>No checklist items yet!</h3>
+		{% endif %}
 	</section>
 </div>
 {% endblock %}
