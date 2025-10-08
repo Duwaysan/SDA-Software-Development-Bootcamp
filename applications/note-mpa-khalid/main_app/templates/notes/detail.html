@@ -18,4 +18,44 @@
 		</div>
 	</div>
 </section>
+<div class="feedings-toy-container">
+	<section class="feedings">
+		<div class="subsection-title">
+			<h2>Checklist</h2>
+
+			<img src="{% static 'assets/excited.png' %}" alt="Excited Emoji" />
+			<img src="{% static 'assets/rich.png' %}" alt="A kabob of kittens" />
+		</div>
+		<h3>Add a Checklist</h3>
+		<form action="{% url 'add-checklist' note.id %}" method="post" class="subsection-content" autocomplete="off">
+			{% csrf_token %}
+			{{ checklist_form.as_p }}
+			<button type="submit" class="btn submit">Add Checklist</button>
+		</form>
+		<table>
+			<thead>
+				<tr>
+					<th>Text</th>
+					<th>Complete</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for checklist in note.checklist_set.all %}
+				{% if checklist.is_done %}
+				<tr>
+					<td>{{checklist.text}}</td>
+					<td><img class="checking-icon" src="{% static 'assets/checked.png' %}" alt="checked icon"></td>
+				</tr>
+				{% endif %}
+				{% if not checklist.is_done %}
+				<tr>
+					<td>{{checklist.text}}</td>
+					<td><img class="checking-icon" src="{% static 'assets/unchecked.png' %}" alt="unchecked icon"></td>
+				</tr>
+				{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</section>
+</div>
 {% endblock %}

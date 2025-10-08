@@ -5,7 +5,7 @@ from django.urls import reverse
 class Note(models.Model):
         title = models.CharField(max_length=100)
         content = models.TextField()
-        date = models.DateField()
+        date = models.DateField('Creation Date')
         
         def __str__(self):
             return f'{self.title} Created on {self.date}'
@@ -19,7 +19,6 @@ class Note(models.Model):
 class Checklist(models.Model):
     text = models.CharField(max_length=255)
     is_done = models.BooleanField(default=False)
-
     note = models.ForeignKey(Note, on_delete=models.CASCADE)
 
     def __str__(self):

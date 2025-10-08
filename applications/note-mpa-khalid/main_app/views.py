@@ -1,20 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Note
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from .forms import ChecklistForm
 
-
-
-# class Notes:
-#     def __init__(self, Title, Content, Date):
-#         self.title = Title
-#         self.content = Content
-#         self.date = Date
-# # Create a list of Notes instances
-# notes = [
-#     Notes("First Note", "This is the content of the first note.", "2023-10-01"),
-#     Notes("Second Note", "This is the content of the second note.", "2023-10-02"),
-#     Notes("Third Note", "This is the content of the third note.", "2023-10-03"),        
-# ]
 
 # Create your views here.
 def home (req):
@@ -29,7 +17,20 @@ def note_index(request):
 
 def note_detail(request, note_id):
     note = Note.objects.get(id=note_id)
-    return render(request, 'notes/detail.html', {'note': note})
+    checklist_form = ChecklistForm()
+    return render(request, 'notes/detail.html', {'note': note,
+                                                  'checklist_form': checklist_form})
+def add_checklist(request, note_id):
+    # create a ModelForm instance using the data in request.POST
+    form = ChecklistForm(request.POST)
+    # validate the form
+    if form.is_valid():
+        # don't save the form to the db until it
+        # has the note_id assigned
+        new_checklist = form.save(commit=False)
+        new_checklist.note_id = note_id
+        new_checklist.save()
+    return redirect('note-detail', note_id=note_id)
 
 class NoteCreate(CreateView):
     model = Note
@@ -45,3 +46,5 @@ class NoteUpdate(UpdateView):
 class NoteDelete(DeleteView):
     model = Note
     success_url = '/notes/'
+
+    
