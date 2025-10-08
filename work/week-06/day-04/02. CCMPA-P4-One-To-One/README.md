@@ -115,7 +115,7 @@ from .models import Feeding, Photo
 class PhotoForm(forms.ModelForm):
     class Meta:
         model = Photo
-        fields = ['url', 'title']
+        fields = ['url']
 ```
 
 ## Passing an instance of `PhotoForm`
