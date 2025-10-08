@@ -17,4 +17,8 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
 
-export function isWinningTicket() {}
+export function isWinningTicket(arr) {
+    for (const i=0; i<arr.Length; i++){
+        console.log(arr[i])
+    }
+}
