@@ -17,5 +17,7 @@ urlpatterns = [
     path('reactions/<int:pk>/', views.ReactionDetail.as_view(), name='reaction-detail'),
     path('reactions/', views.ReactionList.as_view(), name='reaction-index'),
     path('reactions/<int:pk>/delete/', views.ReactionDelete.as_view(), name='reaction-delete'),
+    path('notes/<int:note_id>/associate-reaction/<int:reaction_id>/', views.associate_reaction, name='associate-reaction'),
+    path('notes/<int:note_id>/remove-reaction/<int:reaction_id>/', views.remove_reaction, name='remove-reaction'),
 
 ]

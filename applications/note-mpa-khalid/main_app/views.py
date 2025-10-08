@@ -18,9 +18,11 @@ def note_index(request):
 
 def note_detail(request, note_id):
     note = Note.objects.get(id=note_id)
+    reactions_note_doesnt_have = Reaction.objects.exclude(id__in = note.reactions.all().values_list('id'))
     checklist_form = ChecklistForm()
     return render(request, 'notes/detail.html', {'note': note,
-                                                  'checklist_form': checklist_form})
+                                                  'checklist_form': checklist_form,
+                                                  'reactions': reactions_note_doesnt_have})
 def add_checklist(request, note_id):
     # create a ModelForm instance using the data in request.POST
     form = ChecklistForm(request.POST)
@@ -50,9 +52,23 @@ def update_checklist(request, checklist_id):
     note_id = checklist.note.id
     return redirect('note-detail', note_id=note_id)
 
+def associate_reaction(request, note_id, reaction_id):
+    # Note that you can pass a reaction's id instead of the whole object
+    Note.objects.get(id=note_id).reactions.add(reaction_id)
+    return redirect('note-detail', note_id=note_id)
+
+def remove_reaction(request, note_id, reaction_id):
+    note = Note.objects.filter(id=note_id).first()
+    reaction = Reaction.objects.filter(id=reaction_id).first()
+
+    if note and reaction:
+        note.reactions.remove(reaction)
+
+    return redirect('note-detail', note_id=note_id)
+
 class NoteCreate(CreateView):
     model = Note
-    fields = '__all__'
+    fields = ['title','content','date']
     success_url = '/notes/'
 
 class NoteUpdate(UpdateView):
