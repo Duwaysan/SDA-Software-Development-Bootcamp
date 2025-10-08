@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/reactions/reaction-detail.css' %}" />
+{% endblock %}
+{% block content %}
+<main>
+<div class="card" s>
+    <div class="card-bg"></div>
+    <div class="card-content">
+        <div id="emoji-icon"> {{ reaction }} </div>
+        <h2>{{ reaction.code}}</h2>
+    </div>
+</div>
+<a href="{% url 'reaction-delete' reaction.id %}" class="btn danger">Delete</a>
+</main>
+{% endblock %}

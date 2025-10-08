@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Note, Checklist
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from .models import Note, Checklist, Reaction
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from .forms import ChecklistForm
 
@@ -69,6 +69,27 @@ class ChecklistDelete(DeleteView):
     model = Checklist  
     template_name = 'main_app/checklist_confirm_delete.html'
     success_url = reverse_lazy('note-index')  # Temporary, will override get_success_url
+    
+class ReactionCreate(CreateView):
+    model = Reaction
+    fields = '__all__'
+    success_url = reverse_lazy('reaction-index')
+
+
+
+class ReactionList(ListView):
+    model = Reaction
+
+class ReactionDetail(DetailView):
+    model = Reaction
+
+class ReactionDelete(DeleteView):
+    model = Reaction
+    success_url = '/reactions/'
+    
+
+
+    
 
     # def get_success_url(self):
     #     note_id = self.object.parent.pk

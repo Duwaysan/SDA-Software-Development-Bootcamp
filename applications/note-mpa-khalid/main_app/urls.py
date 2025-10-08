@@ -13,5 +13,9 @@ urlpatterns = [
     path('notes/<int:note_id>/add-checklist/', views.add_checklist, name='add-checklist'),
     path('checklist/<int:pk>/delete/', views.ChecklistDelete.as_view(), name='checklist-item-delete'),
     path('checklist/<int:checklist_id>/update-completion/', views.update_completion, name='update-completion'),  # New route for updating checklist completion
+    path('reactions/create/', views.ReactionCreate.as_view(), name='reaction-create'),
+    path('reactions/<int:pk>/', views.ReactionDetail.as_view(), name='reaction-detail'),
+    path('reactions/', views.ReactionList.as_view(), name='reaction-index'),
+    path('reactions/<int:pk>/delete/', views.ReactionDelete.as_view(), name='reaction-delete'),
 
 ]

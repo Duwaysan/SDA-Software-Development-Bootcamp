@@ -26,3 +26,46 @@ class Checklist(models.Model):
             return f"{self.text} is done"
         else:
             return f"{self.text} is not done"
+        
+
+class Reaction(models.Model):
+    REACTION_CHOICES = [
+        ("like", "👍"),
+        ("love", "❤️"),
+        ("dislike", "👎"),
+        ("100", "💯"),
+        ("wow", "😮"),
+        ("sad", "😢"),
+        ("star", "⭐"),
+        ("fire", "🔥"),
+        ("clap", "👏"),
+        ("pray", "🙏"),
+        ("angry", "😡"),
+        ("laugh", "😂"),
+        ("heart", "💖"),
+        ("check", "✅"),
+        ("cross", "❌"),
+        ("muscle", "💪"),
+        ("rocket", "🚀"),
+        ("confused", "😕"),
+        ("question", "❓"),
+        ("celebrate", "🎉"),
+        ("thumbs_up", "👍"),
+        ("exclamation", "❗"),
+        ("thumbs_down", "👎"),
+    ]
+
+    code = models.CharField(
+        max_length=16,
+        choices=REACTION_CHOICES,
+        db_index=True,
+        unique=True,
+        # no default; you’ll seed rows explicitly
+    )
+    created_at = models.DateTimeField(auto_now_add=True,null=True, blank=True)
+
+    def __str__(self):
+        return self.get_code_display()
+    
+    def get_absolute_url(self):
+        return reverse('Reaction-detail', kwargs={'pk': self.id})
