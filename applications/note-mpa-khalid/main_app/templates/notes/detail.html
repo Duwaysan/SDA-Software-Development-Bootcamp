@@ -22,6 +22,9 @@
 	<section class="feedings">
 		<div class="subsection-title">
 			<h2>Checklist</h2>
+			<!-- {% for log in activity_logs %}
+			<h3>{{ log.timestamp|date:"Y-m-d H:i" }}</h3>
+			{% endfor %} -->
 
 			<img src="{% static 'assets/excited.png' %}" alt="Excited Emoji" />
 			<img src="{% static 'assets/rich.png' %}" alt="A kabob of kittens" />
@@ -90,9 +93,6 @@
 	<section class="toys">
 		<div class="subsection-title">
 			<h2>{{ note.title }}'s Reactions</h2>
-			<!-- <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
-    <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
-    <img src="{% static 'images/fish.svg' %}" alt="A fishy reaction" /> -->
 		</div>
 		<!-- displaying a note's toys -->
 		<div class="subsection-content">
@@ -135,5 +135,35 @@
 			{% endif %}
 		</div>
 	</section>
+
+
+</div>
+<div class="feedings-toy-container">
+
+	<section class="toys" id="activity-log">
+		
+		<h3>Activity Log</h3>
+		{% if activity_logs %}
+		
+		<table>
+	<thead>
+		<tr>
+			<th>Action</th><th>Time</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for e in activity_logs %}
+		<tr>
+			<td>{{ e.action }}</td> <td>{{ e.ts }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% else %}
+<p>No activity yet.</p>
+{% endif %}
+
+
+</section>
 </div>
 {% endblock %}

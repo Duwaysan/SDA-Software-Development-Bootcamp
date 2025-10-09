@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
     
 class Reaction(models.Model):
@@ -57,11 +58,20 @@ class Note(models.Model):
             # Use the 'reverse' function to dynamically find the URL for viewing this cat's details
             return reverse('note-detail', kwargs={'note_id': self.id})
         
-class Pin(models.Model):
-    pass
+class ActivityLog(models.Model):
+    note = models.OneToOneField("Note", on_delete=models.CASCADE, related_name="activity_log")
+    entries = models.JSONField(default=list, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
+    def add_event(self, action):
+        self.entries.append({
+            "action": action,
+            "ts": timezone.now().strftime("%Y-%m-%d %H:%M")
+        })
+        self.save(update_fields=["entries"])
     def __str__(self):
-        return f"Photo for cat_id: {self.cat.id} @{self.url}"
+        return f"ActivityLog for Note {self.note_id}: {self.entries}"
+
     
 
 class Checklist(models.Model):

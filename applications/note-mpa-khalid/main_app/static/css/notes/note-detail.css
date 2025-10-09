@@ -233,3 +233,21 @@
   background: none;
   border: none;
 }
+#activity-log {
+  font-size: 18px;   /* adjust size as you want */
+  line-height: 1.5;  /* optional, improves readability */
+}
+
+/* you can also make table headers bold and bigger */
+#activity-log th {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* if you want table cells slightly larger */
+#activity-log td {
+  font-size: 18px;
+  padding: 6px 10px;
+  text-align: center;
+
+}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Note, Checklist, Reaction
+from .models import Note, Checklist, Reaction, ActivityLog
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from .forms import ChecklistForm
 
 
@@ -18,11 +18,20 @@ def note_index(request):
 
 def note_detail(request, note_id):
     note = Note.objects.get(id=note_id)
-    reactions_note_doesnt_have = Reaction.objects.exclude(id__in = note.reactions.all().values_list('id'))
+    reactions_note_doesnt_have = Reaction.objects.exclude(id__in = note.reactions.all().values_list('id',flat = True))
+    # activity_logs = ActivityLog.objects.filter(note_id=note_id).order_by('-timestamp')
     checklist_form = ChecklistForm()
-    return render(request, 'notes/detail.html', {'note': note,
-                                                  'checklist_form': checklist_form,
-                                                  'reactions': reactions_note_doesnt_have})
+
+    entries = []
+    if hasattr(note, "activity_log") and note.activity_log:
+        entries = list(reversed(note.activity_log.entries))  
+        entries = sorted(entries, key=lambda e: e["ts"], reverse=True)
+    return render(request, 'notes/detail.html', {
+                                                'note': note,
+                                                'checklist_form': checklist_form,
+                                                'reactions': reactions_note_doesnt_have,
+                                                'activity_logs': entries,  # 👈 use this in template
+                                            })
 def add_checklist(request, note_id):
     # create a ModelForm instance using the data in request.POST
     form = ChecklistForm(request.POST)
@@ -33,6 +42,7 @@ def add_checklist(request, note_id):
         new_checklist = form.save(commit=False)
         new_checklist.note_id = note_id
         new_checklist.save()
+        ActivityLog.objects.get_or_create(note_id=note_id)[0].add_event("checklist_created")
     return redirect('note-detail', note_id=note_id)
 
 def update_completion(request, checklist_id):
@@ -55,6 +65,7 @@ def update_checklist(request, checklist_id):
 def associate_reaction(request, note_id, reaction_id):
     # Note that you can pass a reaction's id instead of the whole object
     Note.objects.get(id=note_id).reactions.add(reaction_id)
+    ActivityLog.objects.get_or_create(note_id=note_id)[0].add_event("reaction_added")
     return redirect('note-detail', note_id=note_id)
 
 def remove_reaction(request, note_id, reaction_id):
@@ -63,17 +74,29 @@ def remove_reaction(request, note_id, reaction_id):
 
     if note and reaction:
         note.reactions.remove(reaction)
+        ActivityLog.objects.get_or_create(note_id=note_id)[0].add_event("reaction_removed")
 
     return redirect('note-detail', note_id=note_id)
 
 class NoteCreate(CreateView):
     model = Note
     fields = ['title','content','date']
-    success_url = '/notes/'
+    # success_url = '/notes/'
+    # def get_success_url(self):
+    def form_valid(self, form):
+        resp = super().form_valid(form)           # saves note → self.object
+        log, _ = ActivityLog.objects.get_or_create(note=self.object)
+        log.add_event("note_created")
+        return resp
+
+    def get_success_url(self):
+        return reverse('note-detail', kwargs={'note_id': self.object.id})
+
+
+
 
 class NoteUpdate(UpdateView):
     model = Note
-    # Let's disallow the renaming of a cat by excluding the name field!
     fields = ['title', 'content']
     success_url = '/notes/'
 
@@ -84,14 +107,17 @@ class NoteDelete(DeleteView):
 class ChecklistDelete(DeleteView):
     model = Checklist  
     template_name = 'main_app/checklist_confirm_delete.html'
-    success_url = reverse_lazy('note-index')  # Temporary, will override get_success_url
+
+    def get_success_url(self):
+        # self.object is still available here (not deleted yet)
+        note_id = self.object.note_id
+        ActivityLog.objects.get_or_create(note_id=note_id)[0].add_event("checklist_deleted")
+        return reverse_lazy('note-detail', kwargs={'note_id': note_id})
     
 class ReactionCreate(CreateView):
     model = Reaction
     fields = '__all__'
     success_url = reverse_lazy('reaction-index')
-
-
 
 class ReactionList(ListView):
     model = Reaction
@@ -102,6 +128,7 @@ class ReactionDetail(DetailView):
 class ReactionDelete(DeleteView):
     model = Reaction
     success_url = '/reactions/'
+
     
 
 
