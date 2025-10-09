@@ -3,7 +3,7 @@ from . import views # Import views to connect routes to view functions
 
 urlpatterns = [
     # Routes will be added here
-    path('', views.home, name='home'),
+    path('', views.Home.as_view(), name='home'),
     path('about/', views.about, name='about'),  
     path('notes/', views.note_index, name='note-index'),
     path('notes/<int:note_id>/', views.note_detail, name='note-detail'),
@@ -19,5 +19,6 @@ urlpatterns = [
     path('reactions/<int:pk>/delete/', views.ReactionDelete.as_view(), name='reaction-delete'),
     path('notes/<int:note_id>/associate-reaction/<int:reaction_id>/', views.associate_reaction, name='associate-reaction'),
     path('notes/<int:note_id>/remove-reaction/<int:reaction_id>/', views.remove_reaction, name='remove-reaction'),
+    path('accounts/signup/', views.signup, name='signup'),
 
 ]

@@ -1,39 +1,54 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/notelogo.png' %}"/>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    {% block head %} 
-    {% endblock %}
-    <title>Note App</title>
-  </head>
-  <body>
-    <header>
-      <div class="header-logo-container">
-        <a href="/">
-          <div class="logo-wrapper">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="{% static 'assets/notelogo.png' %}" />
+  <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  {% block head %}
+  {% endblock %}
+  <title>Note App</title>
+</head>
+
+<body>
+  <header>
+    <div class="header-logo-container">
+      <a href="/">
+        <div class="logo-wrapper">
           <img class='main-logo' src="{% static 'assets/notelogo.png' %}" alt="Notes Logo" />
           <img class='main-logo' src="{% static 'assets/notetypelogo.png' %}" alt="notes type ">
         </div>
-        </a>
-      </div>
-      <nav>
-        <ul>
-            <li><a href="{% url 'note-index' %}">All Notes</a></li>
-            <li><a href="{% url 'note-create' %}">Add a Note</a></li>
-            <li><a href="{% url 'reaction-index' %}">All Reactions</a></li>
-            <li><a href="{% url 'reaction-create' %}">Add a Reaction</a></li>
-            <li><a href="{% url 'about' %}">About</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-     {% block content %} 
-     {% endblock %}
-     </main>
-  </body>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'note-index' %}">All Notes</a></li>
+        <li><a href="{% url 'reaction-index' %}">All Reactions</a></li>
+        <li><a href="{% url 'note-create' %}">Add a Note</a></li>
+        <li><a href="{% url 'reaction-create' %}">Add a Reaction</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li>
+          <form id="logout-form" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+          </form>
+        </li>
+        {% else %}
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'home' %}">Login</a></li>
+        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+
 </html>
