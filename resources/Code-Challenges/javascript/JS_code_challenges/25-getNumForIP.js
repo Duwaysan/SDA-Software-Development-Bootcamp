@@ -17,6 +17,20 @@ getNumForIP( '10.0.0.1' ) // => 167772161
 -----------------------------------------------------------------*/
 // Your solution for 25-getNumForIP here:
 
-export function getNumForIP() {
-    
+export function getNumForIP(ip) {
+  const parts = ip.split('.').map(Number);
+  let binaryStr = '';
+
+  for (let p of parts) {
+    let bits = [];
+    while (p > 0) {
+      bits.push(p % 2);
+      p = Math.floor(p / 2);
+    }
+    while (bits.length < 8)
+        bits.push(0);
+    binaryStr += bits.reverse().join('');
+  }
+
+  return parseInt(binaryStr, 2);
 }
