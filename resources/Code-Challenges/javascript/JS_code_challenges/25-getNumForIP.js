@@ -17,4 +17,6 @@ getNumForIP( '10.0.0.1' ) // => 167772161
 -----------------------------------------------------------------*/
 // Your solution for 25-getNumForIP here:
 
-export function getNumForIP() {}
+export function getNumForIP() {
+    
+}
