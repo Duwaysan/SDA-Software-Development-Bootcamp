@@ -14,15 +14,17 @@
 	<img src="{% static 'images/cat-in-box.svg' %}" alt="A cat in a box" />
 </section>
 
-<a href="/cats/3">cats detail page</a>
-
 <section class="card-container">
 	{% for cat in cats %}
 	<div class="card">
 		<a href="{% url 'cat-detail' cat.id %}">
 			<div class="card-content">
-				<div class="card-img-container">
+				<div class="cat-img">
+					{% if cat.photo.url %}
+					<img src="{{cat.photo.url}}" alt="A photo of {{cat.name}}" class="usr-img" />
+					{% else %}
 					<img src="{% static 'images/sk8r-boi-cat.svg' %}" alt="A skater boy cat" />
+					{% endif %}
 				</div>
 				<h2 class="card-title">{{ cat.name }}</h2>
 				{% if cat.age > 0 %}
