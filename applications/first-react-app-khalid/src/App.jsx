@@ -1,43 +1,17 @@
-import './App.css'
-import Profile from './Profile'
+import "./App.css";
+import { useState } from "react";
 
-function App() {
- const person = {
-  "firstName": "Khalid",
-  "lastName": "Alduwaysan",
-  age:22,
-  young: false,
- }
-
-   const todos = [
-    {text: 'Learn JavaScript', done: true},
-    {text: 'Learn JSX', done: false},
-    {text: 'Learn HTML', done: true},
-    {text: 'Learn CSS', done: true},
-    {text: 'Master React', done: false},
-  ];
-  
- const todo =  {text: 'Master React', done: false}
-
- const color  = person.young?"red":"green"
-  return (<>
-    <h1>This is the first react application</h1>
-    <h1> Khalid is {person.age} </h1>
-    <h3 style={{color: `${person.young? "red":"yellow"}`}}>Is Khalid young? {person.young? "yes": "no"}</h3>
-    {person.age === 22 && <h3>That is 22</h3>} 
-    <Profile/>
-    
-      {todos.map(todo => (
-        
-        <ul>
-        <li>{todo.text}</li>
-        <li>{todo.text}</li>
-        </ul>
-      )
-        
-      )}
-    </>
-  )
+const App = () => {
+    const [isDarkMode, setIsDarkMode] = useState("dark")
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [hasPets, setHasPets] = useState(false);
+    const [age, setAge] = useState(0);
+    return (
+        <body>
+            
+        </body>
+    )
 }
 
-export default App
+export default App;
