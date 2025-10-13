@@ -14,4 +14,15 @@ toCamelCase( 'A_b_c' ) // => 'ABC'
 -----------------------------------------------------------------*/
 // Your solution for 26-toCamelCase here:
 
-export function toCamelCase() {}
+export function toCamelCase(str) {
+  let parts = str.split(/[-_]/);
+
+  let camelCased = parts[0];
+
+  for (let i = 1; i < parts.length; i++) {
+    let word = parts[i];
+    let capitalized = word[0].toUpperCase() + word.slice(1);
+    camelCased += capitalized; // concate
+  }
+  return camelCased;
+}
