@@ -1,4 +1,5 @@
 import './App.css'
+import { useState } from 'react';
 import WeatherForecast from './components/WeatherForecast/WeatherForecast';
 
 const weatherForecasts = [
@@ -39,8 +40,8 @@ const weatherForecasts = [
   },
 ];
 
-function App() {
-
+const App = () => {
+  const [weatherCondition, setWeatherCondition] = useState();
   return (
       <>
     <h1>Local Weather</h1>
