@@ -1,5 +1,6 @@
 section {
   display: flex;
+  gap: 2rem
 }
 
 section.weather {
@@ -10,6 +11,7 @@ section.weather {
   flex: 1;
   padding: 10px;
   text-align: center;
+  
 }
 
 .weather span {

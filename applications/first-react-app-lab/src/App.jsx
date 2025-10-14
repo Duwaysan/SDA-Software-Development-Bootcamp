@@ -2,7 +2,10 @@ import './App.css'
 import { useState } from 'react';
 import WeatherForecast from './components/WeatherForecast/WeatherForecast';
 
-const weatherForecasts = [
+
+
+
+const weatherForecastsArr = [
   {
     day: 'Mon',
     img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-components-lab/assets/day.svg',
@@ -39,16 +42,25 @@ const weatherForecasts = [
     time: 'Night',
   },
 ];
-
 const App = () => {
-  const [weatherCondition, setWeatherCondition] = useState();
+  const [weatherForecasts,setWeatherForcasts] = useState([...weatherForecastsArr])
+  
+  function handleDelete(idx) {
+    const arr=[...weatherForecasts]
+    let filteredWeatherForcasts = arr.filter((el, wfIdx) => {
+      return wfIdx !== idx;
+    })
+    setWeatherForcasts(filteredWeatherForcasts)
+    console.log(filteredWeatherForcasts)
+    // setWeatherForcasts(arr)
+  }
   return (
       <>
     <h1>Local Weather</h1>
     <section>
         {
-          weatherForecasts.map((weatherItem, ind) => (
-            <WeatherForecast key={ind} weatherItem={weatherItem}  />
+          weatherForecasts.map((weatherItem, indx) => (
+            <WeatherForecast key={indx} id={indx} weatherItem={weatherItem}  handleDelete={handleDelete} />
           ))
         }
         
