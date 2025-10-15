@@ -42,6 +42,8 @@ const weatherForecastsArr = [
     time: 'Night',
   },
 ];
+
+activities = [{}]
 const App = () => {
   const [weatherForecasts,setWeatherForcasts] = useState([...weatherForecastsArr])
   
