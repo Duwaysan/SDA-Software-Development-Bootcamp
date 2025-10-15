@@ -1,7 +1,10 @@
 import { useState } from "react"
+import { useNavigate } from "react-router"
 
 export default function TodoForm({ handleAddTodo }) {
     // const [cityInput, setCityInput] = useState("Dallas")
+    const navigate = useNavigate();
+
     const initialState = {
         text: "",
         amount: 0,
@@ -19,6 +22,7 @@ export default function TodoForm({ handleAddTodo }) {
         handleAddTodo(newTodo);
         setNewTodo(initialState)
     }
+
     return (
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
             {/* <label htmlFor="cityInput">City: </label>
