@@ -16,4 +16,6 @@ gridTrip( [-22, 100], 'L2L15D50U1D9') //=> [-80, 83]
 -----------------------------------------------------------------*/
 // Your solution for 28-gridTrip here:
 
-export function gridTrip() {}
+export function gridTrip(arr,str) {
+    const grid  = [];
+}
