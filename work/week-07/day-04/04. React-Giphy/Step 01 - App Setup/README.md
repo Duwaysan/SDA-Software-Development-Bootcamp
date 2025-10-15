@@ -50,3 +50,23 @@ localhost:5173
 
 `ctrl+c` to disconnect the server
 
+###  Run Build for Production
+
+- **Purpose:** Compiles your React + Vite project into optimized, production-ready files.  
+- **What it does:**  
+  - Bundles all JavaScript, CSS, and assets into the `dist` folder.  
+  - Minifies and optimizes code for faster loading.  
+  - Handles module resolution, path aliases, and JSX compilation.  
+- **Result:** A set of static files that can be deployed to any web server or hosting service.
+
+**Why you run `npm run build` during project setup:**
+
+- **Verify the setup works:** Ensures Vite, React, JSX, and all configurations (like path aliases and ESLint rules) are correctly processed without errors.  
+- **Catch issues early:** If there are syntax errors, misconfigured imports, or plugin problems, the build will fail, letting you fix them before development.  
+- **Prepare for deployment:** Even in a dev setup, running a build confirms that your project can produce production-ready files when needed.
+
+> Essentially, it’s a quick test that the entire project configuration is correct and functional.
+
+```bash
+npm run build
+```
