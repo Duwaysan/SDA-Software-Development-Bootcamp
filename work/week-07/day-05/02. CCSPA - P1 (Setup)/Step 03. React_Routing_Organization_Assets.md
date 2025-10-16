@@ -109,7 +109,6 @@ We need to update the return statement to reflect the Cat Collector UI that we w
 ```jsx
   import "./App.css"
   import { Route, Routes, Link } from 'react-router';
-  import Link from 
 
 export default function App() {
 
