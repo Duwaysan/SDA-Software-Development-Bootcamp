@@ -1,7 +1,7 @@
 import './App.css'
 import { useState } from 'react';
 import WeatherForecast from './components/WeatherForecast/WeatherForecast';
-
+import { Router, Routes} from 'react-router'
 
 
 
@@ -61,6 +61,9 @@ const App = () => {
   return (
       <>
     <h1>Local Weather</h1>
+    <Routes>
+      <Router></Router>
+    </Routes>
     <section>
         {
           weatherForecasts.map((weatherItem, indx) => (
