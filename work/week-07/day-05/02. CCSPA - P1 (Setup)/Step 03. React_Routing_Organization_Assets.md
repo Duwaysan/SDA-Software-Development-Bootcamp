@@ -504,7 +504,6 @@ nav li {
   }
 
   header {
-    margin: 20px 20px 0 20px;
     width: calc(100vw - 40px);
     max-width: 1920px;
     top: 20px;
