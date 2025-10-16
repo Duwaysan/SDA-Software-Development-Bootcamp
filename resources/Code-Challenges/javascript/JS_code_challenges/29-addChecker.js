@@ -17,4 +17,6 @@ addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
 
-export function addChecker() {}
+export function addChecker(numsArr,num) {
+    if (numsArr)
+}
