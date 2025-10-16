@@ -10,8 +10,8 @@ Then, after the lessons, you will use lab time to repeat what you saw in the les
 Time to setup our Django Rest Framework Backend!
 
 1. Create a folder to hold your python virtual environment / files: 
-   - `applications/cat-collector-spa`
-   - cd into `applications/cat-collector-spa`
+   - `applications/cat-collector-spa/backend`
+   - cd into `applications/cat-collector-spa/backend`
 
 2. Create a python virtual environment and we will install Django with: `pipenv shell`
 
@@ -21,7 +21,7 @@ Time to setup our Django Rest Framework Backend!
 1. Install dependencies: `pipenv install django psycopg2-binary djangorestframework`
 - this will create a `Pipfile.lock`
 
-1. Start a new Django project within your virtual environment:  `django-admin startproject catcollector_backend .`
+1. Start a new Django project within your virtual environment:  `django-admin startproject backend .`
 
 2. **When you are done!... `exit`**
 
