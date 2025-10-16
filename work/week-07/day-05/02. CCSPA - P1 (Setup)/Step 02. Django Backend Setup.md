@@ -32,29 +32,10 @@ Time to setup our Django Rest Framework Backend!
 
 ### Create the database
 
-Databases are not automatically created by Django, so let's create one. This will be a different approach for our Django Web Framework approach.
+Databases are not automatically created by Django, so let's create one!
 
-Create (touch) a file called `./catcollector_backend/create-database.sql` and fill it with the following:
-
-```sql
-CREATE DATABASE catcollectorspa;
-
-CREATE USER cat_admin WITH PASSWORD 'password';
-
-GRANT ALL PRIVILEGES ON DATABASE catcollectorspa TO cat_admin;
-
-```
-
-We can execute that script by running `psql -f create-database.sql` from the
-command line. 
-
-**HINT: pay attention to where you are in your terminal to run the file from your current terminal location!**
-
-Should see some output in the terminal:
-
-- `CREATE DATABASE`
-- `CREATE ROLE`
-- `GRANT`
+ - PSQL:
+`CREATE DATABASE catcollectorspa;`
 
 ### Creating and registering a "Main App"
 
