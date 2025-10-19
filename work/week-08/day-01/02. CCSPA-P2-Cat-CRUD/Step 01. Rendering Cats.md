@@ -257,7 +257,7 @@ export default function CatIndexPage() {
 
 `cat-api.js`
 ```js
-import { sendRequest } from "./sendRequest";
+import sendRequest from "./sendRequest";
 const url = "/cats/"
 
 export async function index() {
