@@ -433,7 +433,7 @@ const location = useLocation();
         <Routes>
           <Route path="/home" element={<HomePage />}/>
           <Route path="/about" element={<AboutPage />}/>
-          <Route path="/cats" element={<CatIndexPage allCats={allCats} />}/>
+          <Route path="/cats" element={<CatIndexPage />}/>
           <Route path="/*" element={ <Navigate to="/home"/>}/>
         </Routes>
       </main>
