@@ -79,11 +79,7 @@ export default function App() {
       <nav><Link to="/">All Days</Link></nav>
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <section>
-              {forecasts.map((weatherItem, idx) => (
+        <Route path="/" element={<section> {forecasts.map((weatherItem, idx) => (
                 <div key={weatherItem.day} style={{ marginBottom: 16 }}>
                   <WeatherForecast id={idx} weatherItem={weatherItem} handleDelete={handleDelete} onActivityChange={handleActivityChange} />
                   <div style={{ marginTop: 8 }}>
