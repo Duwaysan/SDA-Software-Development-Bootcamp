@@ -20,4 +20,26 @@ totalTaskTime( [5, 2, 6, 8, 7, 2], 3 ) // => 12
 -----------------------------------------------------------------*/
 // Your solution for 30- here:
 
-export function totalTaskTime() {}
+export function totalTaskTime(queue, threads) {
+  if (!queue || queue.length === 0) return 0
+  const workers = new Array(Math.min(threads, queue.length)).fill(0)
+  for (let i = 0; i < workers.length; i++) {
+    workers[i] = queue.shift()
+  }
+  let time = 0
+  while (true) {
+    const running = workers.filter(t => t > 0)
+    const tick = Math.min(...running)
+    time += tick
+    for (let i = 0; i < workers.length; i++) {
+      if (workers[i] > 0) {
+        workers[i] -= tick
+        if (workers[i] === 0 && queue.length > 0) {
+          workers[i] = queue.shift()
+        }
+      }
+    }
+    if (queue.length === 0 && workers.every(t => t === 0)) break
+  }
+  return time
+}

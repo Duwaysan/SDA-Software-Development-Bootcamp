@@ -1,12 +1,18 @@
 import './App.css'
 import { Route, Routes, Link } from 'react-router';
+import headerLogo from "../../assets/images/notelogo.png"
+import headerWrittenLogo from "../../assets/images/notetypelogo.png"
+import AboutPage from "../AboutPage/AboutPage.jsx"
+import HomePage from "../HomePage/HomePage.jsx"
 
 function App() {
   return (<>
       <header>
         <div className="header-logo-container">
           <a href="/">
-            <img src="" alt="The Cat Collector Logo" />
+            <img id="header-img" src={headerLogo} alt="The notes Logo" />
+            <img id="header-txtimg" src={headerWrittenLogo} alt="The notes Logo" />
+            
           </a>
         </div>
         <nav>
@@ -17,8 +23,8 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/*" element={<h2>Home Page</h2>} />
-          <Route path="/about" element={<h2>About Page</h2>} />
+          <Route path="/*" element={<HomePage/>} />
+          <Route path="/about" element={<AboutPage/>} />
         </Routes>
       </main>
     </>);

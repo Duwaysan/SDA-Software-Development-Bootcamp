@@ -40,3 +40,26 @@
 .read-the-docs {
   color: #888;
 }
+header {
+  background-color: rgba(249, 202, 93);
+  border : rgb(169, 107, 49) solid 2px;
+  border-radius: 6px;
+}
+.header-logo-container {
+  padding: 3px 0px;
+  width: 200px;
+}
+#header-img {
+  width: 45px;
+}
+#header-txtimg {
+  width: 90px;
+}
+.header-logo-container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: auto;
+}
+

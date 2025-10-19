@@ -17,6 +17,21 @@ addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
 
-export function addChecker(numsArr,num) {
-    if (numsArr)
+export function addChecker(numsArr, num) {
+  let left = 0;
+  let right = numsArr.length - 1;
+
+  while (left < right) {
+    let sum = numsArr[left] + numsArr[right];
+
+    if (sum === num) {
+      return true; // found a pair
+    } else if (sum < num) {
+      left++; // make sum bigger
+    } else {
+      right--; // make sum smaller
+    }
+  }
+
+  return false; // no pair found
 }

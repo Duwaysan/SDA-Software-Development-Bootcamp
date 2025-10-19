@@ -1,6 +1,7 @@
 section {
   display: flex;
-  gap: 2rem
+  gap: 2rem;
+  
 }
 
 section.weather {
@@ -12,8 +13,43 @@ section.weather {
   padding: 10px;
   text-align: center;
   
+  
 }
-
+.weather {
+  width : 200px;
+  height : 300px;
+  border-radius: 20px;
+}
 .weather span {
   font-weight: bold;
+  
+}
+
+button {
+  font-size: 80%;
+  margin: 3px;
+}
+.weather.sunny {
+  background-color: #ffe066;   /* bright yellow */
+  color: #333;
+}
+
+.weather.clear {
+  background-color: #1a2a30;   /* sky blue */
+  color: white;
+}
+
+.weather.stormy {
+  background-color: #222255;   /* deep purple/blue */
+  color: rgb(241, 200, 67);
+}
+
+.weather.overcast {
+  background-color: #90caf4;
+  color: black;
+}
+
+.weather.cloudy {
+  background-color: #708090;   /* slate gray */
+  color: white;
 }

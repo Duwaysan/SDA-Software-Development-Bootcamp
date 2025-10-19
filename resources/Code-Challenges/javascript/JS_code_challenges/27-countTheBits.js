@@ -17,7 +17,7 @@ countTheBits( 65535 )  //=> 16
 -----------------------------------------------------------------*/
 // Your solution for 27-countTheBits here:
 
-export function countTheBits() {
+export function countTheBits(num) {
     let count = 0;
 
   while (num > 0) {

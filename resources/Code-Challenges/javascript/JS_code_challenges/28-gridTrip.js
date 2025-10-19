@@ -16,6 +16,27 @@ gridTrip( [-22, 100], 'L2L15D50U1D9') //=> [-80, 83]
 -----------------------------------------------------------------*/
 // Your solution for 28-gridTrip here:
 
-export function gridTrip(arr,str) {
-    const grid  = [];
+export function gridTrip(start, moves) {
+  let x = start[0];
+  let y = start[1];
+
+  let i = 0;
+  while (i < moves.length) {
+    let dir = moves[i]; 
+    i++;
+
+    let numStr = "";
+    while (i < moves.length && !isNaN(moves[i])) {
+      numStr += moves[i];
+      i++;
+    }
+    let num = parseInt(numStr, 10);
+
+    if (dir === "U") x += num;
+    if (dir === "D") x -= num;
+    if (dir === "R") y += num;
+    if (dir === "L") y -= num;
+  }
+
+  return [x, y];
 }
