@@ -374,7 +374,7 @@ from .views import Home, Cats
 
 urlpatterns = [
   path('', Home.as_view(), name='home'),
-  path('/cats/', Cats.as_view(), name='cat-index'),
+  path('cats/', Cats.as_view(), name='cat-index'),
 ]
 ```
 
