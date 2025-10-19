@@ -309,10 +309,9 @@ Because we are working with two different origins - one application (frontend) i
 [Django CORS Headers Docs](https://pypi.org/project/django-cors-headers/)
 
 First item of business is to install the 'corsheaders' package in our backend:
-1. `exit` your pipenv shell if you have not yet
-2. `pipenv install django-cors-headers`
-3. your Pipfile should now display: `django-cors-headers = "*"`
-4. Let's add `corsheaders` into our `installed apps` in `settings.py`
+1. `pipenv install django-cors-headers`
+2. your Pipfile should now display: `django-cors-headers = "*"`
+3. Let's add `corsheaders` into our `installed apps` in `settings.py`
 
 `settings.py`
 ```python
