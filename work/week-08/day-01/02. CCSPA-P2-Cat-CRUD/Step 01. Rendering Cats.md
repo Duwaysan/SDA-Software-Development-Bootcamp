@@ -103,7 +103,7 @@ Our next step is to setup our User Interface to be able to view our Cats, store 
    
 `CatIndexPage.jsx`
 ```jsx
-import { useState } from "React";
+import { useState } from "react";
 // other imports here
 
 export default function CatIndexPage() {
