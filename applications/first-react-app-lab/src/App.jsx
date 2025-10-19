@@ -15,6 +15,7 @@ const weatherForecastsArr = [
 
 const App = () => {
   const [weatherForecasts,setWeatherForecasts] = useState([...weatherForecastsArr])
+  const [activities,setActivities] = useState([])
   
   function handleDelete(idx) {
     const arr=[...weatherForecasts]
@@ -22,17 +23,18 @@ const App = () => {
       return wfIdx !== idx;
     })
     setWeatherForecasts(filteredWeatherForcasts)
-    console.log(filteredWeatherForcasts)
-    // setWeatherForcasts(arr)
   }
   function handleActivityChange(id, value) {
   if (!value) return
   setWeatherForecasts(wf =>
-    wf.map((item, idx) =>
-      idx === id
-        ? { ...item, activities: [...item.activities, value] }
-        : item
-    )
+    wf.map((item, idx) => {
+  if (idx === id) {
+    setActivities([...item.activities,value])
+    return { ...item, activities: [...item.activities, value] }
+  } else {
+    return item
+  }
+})
   )
 }
   
