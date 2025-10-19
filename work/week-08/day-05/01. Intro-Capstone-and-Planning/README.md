@@ -6,4 +6,4 @@ Throughout this course, you have built a strong foundation in full-stack softwar
 
 Beyond the technical skills, you've also explored software development best practices — writing clean and maintainable code, handling user authentication and security, managing databases efficiently, and deploying web applications. Now, as you approach your final project, it’s time to bring all these elements together. This capstone is your opportunity to showcase your full-stack expertise, demonstrating not only your technical proficiency but also your ability to design, develop, and deploy a complete, functional web application from scratch.
 
-Please refer to the `SDA-Ghazal/projects/02. Capstone-Project.md` file for specific details on the project and expectations.
+Please refer to the `SDA-SIRAJ/projects/02. Capstone-Project.md` file for specific details on the project and expectations.
