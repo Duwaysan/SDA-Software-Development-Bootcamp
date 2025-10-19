@@ -14,35 +14,31 @@ const weatherForecastsArr = [
 ];
 
 const App = () => {
-  const [weatherForecasts,setWeatherForcasts] = useState([...weatherForecastsArr])
+  const [weatherForecasts,setWeatherForecasts] = useState([...weatherForecastsArr])
   
   function handleDelete(idx) {
     const arr=[...weatherForecasts]
     let filteredWeatherForcasts = arr.filter((el, wfIdx) => {
       return wfIdx !== idx;
     })
-    setWeatherForcasts(filteredWeatherForcasts)
+    setWeatherForecasts(filteredWeatherForcasts)
     console.log(filteredWeatherForcasts)
     // setWeatherForcasts(arr)
   }
-  function handleActivityChange(id,value){
-    setWeatherForcasts(elem =>
-      elem.map((item,idx) => {
-        id === idx ? {...item,activities:[...item.activities,value]}: item
-        console.log(item)
-      })
+  function handleActivityChange(id, value) {
+  if (!value) return
+  setWeatherForecasts(wf =>
+    wf.map((item, idx) =>
+      idx === id
+        ? { ...item, activities: [...item.activities, value] }
+        : item
     )
-    
-  } 
+  )
+}
   
   return (
       <>
     <h1>Local Weather</h1>
-    <form>
-
-    <label htmlFor="activity">Activitiy </label>
-    {/* <input id="activity" name="activity" type="text" value={weatherItem.activities} onChange={handleActivitiyAdd} /> */}
-    </form>
     <section>
         {
           weatherForecasts.map((weatherItem, indx) => (
