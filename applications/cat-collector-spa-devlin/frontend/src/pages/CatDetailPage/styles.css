@@ -215,16 +215,8 @@
 }
 
 @media only screen and (min-width: 768px) {
-    .detail-cat-container {
-        padding: 35px 30px;
-        flex-direction: row;
-        align-items: center;
-        justify-content: start;
-    }
-
     .detail-cat-img {
-        width: 25%;
-        max-width: 250px;
+        max-width: 450px;
         margin-right: 25px;
     }
 

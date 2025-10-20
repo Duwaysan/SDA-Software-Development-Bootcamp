@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import CatSerializer
-from .models import Cat
+from .serializers import CatSerializer, FeedingSerializer, PhotoSerializer
+from .models import Cat, Feeding, Photo
 from django.shortcuts import get_object_or_404
 
 # Define the home view
@@ -64,4 +64,52 @@ class CatDetail(APIView):
 			cat.delete()
 			return Response({'success': True}, status=status.HTTP_200_OK)
 		except Exception as err:
+			print("This means an error raised", str(err) )
+			return Response({'error': "THis is an error message" }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class FeedingsIndex(APIView):
+	serializer_class = FeedingSerializer
+
+	def get(self, request, cat_id):
+		try:
+			queryset = Feeding.objects.filter(cat=cat_id)
+			feedingData = self.serializer_class(queryset, many=True)
+			return Response(feedingData.data, status=status.HTTP_200_OK)
+		except Exception as err:
+			return Response({'error': str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+	def post(self, request, cat_id):
+		try:
+			serializer = self.serializer_class(data=request.data)
+			if serializer.is_valid():
+				serializer.save()
+				return Response(serializer.data, status=status.HTTP_201_CREATED)
+			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+		except Exception as err:
+			return Response({"error": str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class PhotoDetail(APIView):
+	serializer_class = PhotoSerializer
+
+	def post(self, request, cat_id):
+		try:
+			# Set Cat ID for Photo
+			data = request.data.copy()
+			data["cat"] = int(cat_id)
+
+			#  Find Existing Photo and Delete if exists
+			existing_photo = Photo.objects.filter(cat=cat_id)
+			if existing_photo:
+				existing_photo.delete()
+
+			# Create Serializer Instance and Validate
+			serializer = self.serializer_class(data=data)
+			if serializer.is_valid():
+				cat = get_object_or_404(Cat, id=cat_id)
+				serializer.save()
+				return Response(CatSerializer(cat).data, status=status.HTTP_200_OK)
+			print(serializer.errors)
+			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+		except Exception as err:
+			print(str(err))
 			return Response({'error': str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

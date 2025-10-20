@@ -8,7 +8,10 @@ export default function CatIndexCard({ cat }) {
         <div className="cat-index-card">
             <Link to={`/cats/${cat.id}`}>
                 <div className="cat-index-card-content">
-                    <img src={skaterCat} alt="A skater boy cat" />
+                    {cat.photo?.url
+                        ? <img src={cat.photo.url} alt={`A photo of ${cat.name}`} className="usr-img" />
+                        : <img src={skaterCat} alt="A skater boy cat" />
+                    }
                     <h2>{cat.name}</h2>
                     <p>A {cat.age > 0 ? `${cat.age} year old ${cat.breed}` : `A ${cat.breed} kitten.`}</p>
                     <p><small>{cat.description}</small></p>

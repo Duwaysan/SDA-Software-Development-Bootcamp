@@ -20,3 +20,8 @@ export async function update(formData, catId) {
 export async function deleteCat(catId) {
     return sendRequest(`${baseURL}${catId}/`, "DELETE")
 }
+
+export async function createPhoto(catId, formData) {
+    console.log(catId, formData, "cat api line 25")
+    return sendRequest(`${baseURL}${catId}/add-photo/`, "POST", formData)
+}

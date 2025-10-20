@@ -36,8 +36,15 @@ export default function CatFormPage({ createCat, editCat, deleteCat }) {
         }
     }
 
-    function handleDelete() {
-
+    async function handleDelete(evt) {
+        evt.preventDefault()
+        const res = await catAPI.deleteCat(currCat.id);
+        if (res?.success) {
+            navigate("/cats")
+        } else {
+            console.log(res)
+            alert("There was an error in deleting the Cat - please contact admin.")
+        }
     }
 
     if (deleteCat && !currCat) return <h1>Loading</h1> 
