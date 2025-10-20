@@ -135,7 +135,7 @@ export function addPhoto(catId, formData) {
 ```jsx
 <section className="detail-cat-container">
     // add this to top of the cat-container, other items below
-    <div className="cat-img">
+    <div className="detail-cat-img">
         { catDetail.photo?.url
             ? <img src={catDetail.photo.url} alt={`A photo of ${catDetail.name}`} className="usr-img" />
             : <img src={skaterCat} alt="A skater boy cat" />
