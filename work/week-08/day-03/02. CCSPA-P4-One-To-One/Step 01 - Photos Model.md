@@ -136,7 +136,7 @@ export function addPhoto(catId, formData) {
 <section className="detail-cat-container">
     // add this to top of the cat-container, other items below
     <div className="cat-img">
-        { catDetail.photo.url
+        { catDetail.photo?.url
             ? <img src={catDetail.photo.url} alt={`A photo of ${catDetail.name}`} className="usr-img" />
             : <img src={skaterCat} alt="A skater boy cat" />
         }
@@ -171,11 +171,11 @@ export default function AddPhotoForm({ cat, addPhoto }) {
         <h3>Change { cat.name }'s photo</h3>
         <form onSubmit={handleSubmit} autocomplete="off">   
             <p>
-              <label for="id_url">Url:</label>
+              <label htmlFor="id_url">Url:</label>
               <input value={formData.url} type="text" name="url" required    id="id_url" onChange={handleChange}/>
             </p>
             <p>
-              <label for="id_title">Title:</label>
+              <label htmlFor="id_title">Title:</label>
               <input value={formData.title} type="text" name="title" maxLength="250" required    id="id_title" onChange={handleChange}/>
             </p>
             <button type="submit" class="btn submit">Add Photo</button>
