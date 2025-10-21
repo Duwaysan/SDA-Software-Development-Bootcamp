@@ -140,7 +140,7 @@ We will need three separate view functions to handle all user based functionalit
 
 - ONE => User Login
 - TWO => User Signup / Registration
-- Three => User Verification
+- THREE => User Verification
 
 We will take care of signup in this first step today.
 
