@@ -22,6 +22,14 @@ export async function deleteCat(catId) {
 }
 
 export async function createPhoto(catId, formData) {
-    console.log(catId, formData, "cat api line 25")
     return sendRequest(`${baseURL}${catId}/add-photo/`, "POST", formData)
 }
+
+export async function addToyToCat(catId, toyId) {
+    return sendRequest(`${baseURL}${catId}/associate-toy/${toyId}/`, "POST")
+}
+
+export async function removeToyToCat(catId, toyId) {
+    return sendRequest(`${baseURL}${catId}/remove-toy/${toyId}/`, "POST")
+}
+

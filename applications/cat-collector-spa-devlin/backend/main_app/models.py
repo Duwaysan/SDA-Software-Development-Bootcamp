@@ -6,11 +6,20 @@ MEALS = (
     ('D', 'Dinner')
 )
 
+# Add the Toy model
+class Toy(models.Model):
+    name = models.CharField(max_length=50)
+    color = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+    
 class Cat(models.Model):
     name = models.CharField(max_length=100)
     breed = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     age = models.IntegerField()
+    toys = models.ManyToManyField(Toy)
 
     def __str__(self):
         return self.name
@@ -36,3 +45,4 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for cat_id: {self.cat.id} @{self.url}"
+    
