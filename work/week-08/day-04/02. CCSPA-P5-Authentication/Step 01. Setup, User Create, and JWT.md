@@ -2,7 +2,7 @@
 
 ![Cat Wave](./assets/cat-wave.png)
 
-**Learning objective:** By the end of this lesson, learners will be able to login, signup, and validate a `User` within the Django Rest Framework system as well as setup these functionalities in the front end as well. Not that we have two separate entities, front and band ends, we will need to account for both sides! So let's get started!
+**Learning objective:** By the end of this lesson, learners will be able to login, signup, and validate a `User` within the Django Rest Framework system as well as setup these functionalities in the front end as well. Now that we have two separate entities, front and back ends, we will need to account for both sides! So let's get started!
 
 ## Setup
 
