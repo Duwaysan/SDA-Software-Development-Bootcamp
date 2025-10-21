@@ -98,6 +98,7 @@ path('toys/<int:toy_id>/', ToyDetail.as_view(), name='toy-detail'),
 ```python
 from .models import Cat, Feeding, Toy
 from .serializers import CatSerializer, FeedingSerializer, ToySerializer
+from rest_framework import status, generics # << make sure generics is imported!
 
 class ToyIndex(generics.ListCreateAPIView):
   serializer_class = ToySerializer
