@@ -161,22 +161,19 @@ class CreateUserView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
-        # Save user (automatically hashes password if serializer is correct)
-        user = serializer.save()
-
-        # Generate JWT tokens
-        refresh = RefreshToken.for_user(user)
-
-        data = {
-            'refresh': str(refresh),
-            'access': str(refresh.access_token),
-            'user': UserSerializer(user).data
-        }
-
-        return Response(data, status=status.HTTP_201_CREATED)
+        try:
+            serializer = self.serializer_class(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            user = serializer.save()
+            refresh = RefreshToken.for_user(user)
+            data = {
+        	    'refresh': str(refresh),
+        	    'access': str(refresh.access_token),
+        	    'user': UserSerializer(user).data
+            }
+            return Response(data, status=status.HTTP_201_CREATED)
+        except Exception as err:
+            return Response({'error': str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 ```
 
 **A RefreshToken is a long-lived token used to obtain a new access token after the current one expires, without requiring the user to log in again.**
