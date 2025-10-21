@@ -287,6 +287,7 @@ export default function ToyFormPage({ createToy, editToy, deleteToy }) {
     const navigate = useNavigate();
 
     useEffect(() => {
+        if (editToy && id || deleteToy && id) getAndSetDetail()
         async function getAndSetDetail() {
           try {
               const toyDetail = await toyAPI.show(id);
@@ -297,7 +298,7 @@ export default function ToyFormPage({ createToy, editToy, deleteToy }) {
               setFormData(initialState);
               setCurrToy(null);
           }
-        if (editToy || deleteToy && id) getAndSetDetail()
+        }
     }, [id])
 
     function handleChange(evt) {
