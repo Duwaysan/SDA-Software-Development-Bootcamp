@@ -71,13 +71,7 @@ We will need a python package to access the .env file and then configure access 
 
 #### Install `python-dotenv`
 Let's start by installing the package. 
-Which pip are you working with?...
-- `pip --version` or `pip3 --version`
-
-IF you are working with `python`:
-- `pip install python-dotenv`
-IF you are working with `python3`:
-- `pip3 install python-dotenv`
+- `pipenv install python-dotenv`
 
 #### CREATE .ENV
 Once the package is installed we can create the .env
