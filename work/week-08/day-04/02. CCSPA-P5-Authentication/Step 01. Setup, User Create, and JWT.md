@@ -6,7 +6,7 @@
 
 ## Setup
 
-We will be working with a different approach to web Authentication. The `Json Web Token` or `JWT` is a base64 encoded URL napproach of representing `claims` or pieces of information between two different parties (front and back ends). The idea is that the format allows us to share sensitive information like passwords, username / email, etc. in a format that does not expose that information directly to the general public. Keep in mind this information is **NOT** encrypted.
+We will be working with a different approach to web Authentication. The `Json Web Token` or `JWT` is a base64 encoded URL approach of representing `claims` or pieces of information between two different parties (front and back ends). The idea is that the format allows us to share sensitive information like passwords, username / email, etc. in a format that does not expose that information directly to the general public. Keep in mind this information is **NOT** encrypted.
 
 ### Django Rest Framework Docs on Authentication
 [DRF Authentication Docs](https://www.django-rest-framework.org/api-guide/authentication/)
