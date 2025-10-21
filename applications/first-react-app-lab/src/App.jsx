@@ -93,8 +93,7 @@ export default function App() {
 
         <Route
           path="/forecast/:day"
-          element={<ForecastDetail forecasts={forecasts} onAdd={addActivityByDay} />}
-        />
+          element={<ForecastDetail forecasts={forecasts} onAdd={addActivityByDay} />}/>
 
         <Route path="*" element={<p>Page not found</p>} />
     </Routes>

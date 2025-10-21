@@ -1,9 +1,10 @@
 from django.db import models
+from datetime import date
 
 class Note(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    date = models.DateField
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return self.title

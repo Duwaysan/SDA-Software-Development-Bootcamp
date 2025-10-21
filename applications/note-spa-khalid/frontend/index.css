@@ -1,5 +1,7 @@
 html {
   box-sizing: border-box;
+  /* max-width: 100vw; */
+  
 }
 
 /* The Universal Selector */
@@ -18,9 +20,11 @@ html {
      in most browser configurations this will be 10px */
 :root {
   font-size: 62.5%;
+  margin: auto;
 }
 
 body {
+  max-width: 100vw;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -49,10 +53,6 @@ body {
   --card-border-radius: 6px;
 }
 
-#root {
-  width: 100%;
-  height: 100%;
-}
 
 header {
   width: 100%;
