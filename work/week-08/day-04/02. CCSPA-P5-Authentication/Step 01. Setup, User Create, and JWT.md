@@ -463,10 +463,29 @@ import SignupPage from '../SignupPage/SignupPage';
       <Navbar user={user} setUser={setUser} />
     </ul>
 
-    // add new signup route / page
-    <Routes>
-        <Route path="/signup" element={<SignupPage user={user} setUser={setUser} />}/>
-    </Routes>
+    // ADD NEW SIGNUP ROUTE, UPDATE ROUTES BASED ON USER LOGED IN
+      <Routes>
+        {user ? <>
+          <Route path="/home"                      element={<HomePage />}/>
+          <Route path="/about"                     element={<AboutPage />} />
+          <Route path="/cats"                      element={<CatIndexPage />} />
+          <Route path="/cats/new"                  element={<CatFormPage createCat={true} />} />
+          <Route path="/cats/edit/:id"             element={<CatFormPage editCat={true}   />}/>
+          <Route path="/cats/confirm_delete/:id"   element={<CatFormPage deleteCat={true} />}/>
+          <Route path="/cats/:catId"               element={<CatDetailPage />} />
+          <Route path="/toys"                      element={<ToyIndexPage />} />
+          <Route path="/toys/new"                  element={<ToyFormPage createToy={true} />} />
+          <Route path="/toys/edit/:id"             element={<ToyFormPage editToy={true}   />}/>
+          <Route path="/toys/confirm_delete/:id"   element={<ToyFormPage deleteToy={true} />}/>
+          <Route path="/toys/:id"                  element={<ToyDetailPage />} />
+          <Route path="/*"                         element={<Navigate to="/home"/>}/>
+        </> : <>
+          <Route path="/home"                      element={<HomePage />}/>
+          <Route path="/about"                     element={<AboutPage />} />
+          <Route path="/signup"                    element={<SignupPage user={user} setUser={setUser} />}/>
+          <Route path="/*"                         element={<Navigate to="/home"/>}/>
+        </>}
+      </Routes>
 
 
 ```
