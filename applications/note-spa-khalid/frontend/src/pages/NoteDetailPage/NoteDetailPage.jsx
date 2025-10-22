@@ -36,7 +36,7 @@ export default function NoteDetailPage() {
 			<div className="cat-details">
 				<h1>{`Title: ${noteDetail.title}`}</h1>
 				<h2>{`Description: ${noteDetail.description} `}</h2>
-				<p>{noteDetail.created_at}</p>
+				<p>{noteDetail.created_at.slice(0,10)}</p>
 			</div>
 			<div className="cat-actions">
 				<Link to={`/notes/edit/${noteDetail.id}`} className="btn warn">Edit</Link>

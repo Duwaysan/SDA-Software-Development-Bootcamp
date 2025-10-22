@@ -46,8 +46,8 @@ export default function NoteFormPage({ createNote, editNote, deleteNote }) {
         const newNote = editNote ? await noteAPI.update(dataToSend, currNote.id) : await noteAPI.create(dataToSend);
         setFormData(initialState)
         
-  console.log("Create/Edit response:", newNote.id);
-  return; // or show an error instead of navigating
+//   console.log("Create/Edit response:", newNote.id);
+//   return; // or show an error instead of navigating
 
         navigate(`/notes/${newNote.id}`)
       } catch (err) {

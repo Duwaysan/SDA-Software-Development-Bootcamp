@@ -1,8 +1,11 @@
 .cat-index-card {
     width: 275px;
     margin: 10px;
-    border: var(--borders);
+    border-top: 3px  solid rgb(164, 53, 53);
+    border-left: 3px  solid rgb(83, 0, 0);
+    border-radius: 5%;
     box-shadow: var(--card-box-shadow);
+    
 }
 
 .cat-index-card-content {
