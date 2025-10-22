@@ -11,12 +11,11 @@ import fish from "../../assets/images/fish.svg";
 import FeedingForm from "../../components/Forms/FeedingForm";
 import PhotoForm from "../../components/Forms/PhotoForm";
 import DisplayCatToys from "../../components/DisplayCatToys/DisplayCatToys";
-import { closest } from "color-2-name";
 
 // APIs
 import * as catAPI from "../../utilities/cat-api";
-import * as feedingsAPI from "../../utilities/feeding-api";
-import * as toysAPI from "../../utilities/toy-api";
+// import * as feedingsAPI from "../../utilities/feeding-api";
+// import * as toysAPI from "../../utilities/toy-api";
 
 // CONSTANTS
 const MEALS = {
@@ -84,6 +83,13 @@ export default function CatDetailPage() {
 		}
 	}
 
+	const catToys = toysCatHas.map(toy => (
+		<DisplayCatToys key={toy.id} toy={toy} submitFunction={handleRemoveToy} formAction="Remove" />
+	))
+
+	const availableToys = toysCatDoeNotHave.map(toy => (
+		<DisplayCatToys key={toy.id}  toy={toy} submitFunction={handleAddToy} formAction="Add" />
+	))
 
 
 	if (!catDetail) return <h3>Your cat details will display soon</h3>
@@ -155,14 +161,19 @@ export default function CatDetailPage() {
 						<img src={mouse} alt="A mouse" />
 						<img src={fish} alt="A fishy toy" />
 					</div>
+					<h3>{ catDetail.name }'s Toys</h3>
+					<div className="subsection-content">
+						{ toysCatHas.length > 0
+							? catToys 
+							: <p className="no-toys">{catDetail.name} does not have any toys!</p>
+						}
+					</div>
 					<h3>Available Toys</h3>
 					<div className="subsection-content">
-						{toysCatHas.map(toy => (
-							<DisplayCatToys key={toy.id} toy={toy} submitFunction={handleRemoveToy} formAction="Remove" />
-						))}
-						{toysCatDoeNotHave.map(toy => (
-							<DisplayCatToys key={toy.id}  toy={toy} submitFunction={handleAddToy} formAction="Add" />
-						))}
+						{ availableToys.length > 0
+							? availableToys
+							: <p class="all-toys">{catDetail.name} already has all the available toys 🥳</p>
+						}
 					</div>
 				</section>
 			</div>
