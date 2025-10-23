@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics, status
-from .models import Note
-from .serializers import NoteSerializer
+from .models import Note, Photo
+from .serializers import NoteSerializer, PhotoSerializer
 from django.shortcuts import get_object_or_404
 
 # Define the home view
@@ -66,3 +66,29 @@ class NoteDetail(APIView):
         return Response({'error': str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+
+class PhotoDetail(APIView):
+	serializer_class = PhotoSerializer
+
+	def post(self, request, note_id):
+		try:
+			# Set note ID for Photo
+			data = request.data.copy()
+			data["note"] = int(note_id)
+
+			#  Find Existing Photo and Delete if exists
+			existing_photo = Photo.objects.filter(note=note_id)
+			if existing_photo:
+				existing_photo.delete()
+
+			# Create Serializer Instance and Validate
+			serializer = self.serializer_class(data=data)
+			if serializer.is_valid():
+				note = get_object_or_404(Note, id=note_id)
+				serializer.save()
+				return Response(NoteSerializer(note).data, status=status.HTTP_200_OK)
+			print(serializer.errors)
+			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+		except Exception as err:
+			print(str(err))
+			return Response({'error': str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

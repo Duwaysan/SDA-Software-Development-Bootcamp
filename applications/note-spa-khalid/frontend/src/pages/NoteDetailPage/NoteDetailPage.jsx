@@ -1,11 +1,26 @@
 import "./styles.css";
+import AddPhotoForm from "../AddPhotoForm/AddPhotoForm.jsx";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import bookImg from "../../assets/images/book.png";
 import { Link } from "react-router";
+
+// Assets
+import bookImg from "../../assets/images/book.png";
 
 // APIs
 import * as noteAPI from "../../utilities/note-api"
+
+
+
+async function addPhoto(noteId, formData) {
+	try {
+		const updatedNote = await noteAPI.addPhoto(noteId, formData);
+		setNoteDetail(updatedNote);
+	} catch (err) {
+		console.log(err);
+		setNoteDetail({ ...noteDetail })
+	}
+}
 
 
 export default function NoteDetailPage() {
@@ -31,17 +46,24 @@ export default function NoteDetailPage() {
 	return (
 		<section className="detail-cat-container">
 			<div className="detail-cat-img">
-				<img src={bookImg} alt="book" />
+				{noteDetail.photo?.url
+					? <img src={noteDetail.photo.url} alt={`A photo of ${noteDetail.name}`} className="usr-img" />
+					: <img src={bookImg} alt="A skater boy note" />
+				}
 			</div>
 			<div className="cat-details">
 				<h1>{`Title: ${noteDetail.title}`}</h1>
 				<h2>{`Description: ${noteDetail.description} `}</h2>
-				<p>{noteDetail.created_at.slice(0,10)}</p>
+				<p>{noteDetail.created_at.slice(0, 10)}</p>
 			</div>
 			<div className="cat-actions">
 				<Link to={`/notes/edit/${noteDetail.id}`} className="btn warn">Edit</Link>
 				<Link to={`/notes/confirm_delete/${noteDetail.id}`} className="btn danger">Delete</Link>
 			</div>
+			<section>
+				<AddPhotoForm note={noteDetail} addPhoto={addPhoto} />
+			</section>
+
 		</section>
 	)
 }

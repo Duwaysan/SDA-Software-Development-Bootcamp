@@ -28,6 +28,6 @@
     font-size: var(--font-reg);
 }
 
-#card-img {
-    width: 60px;
+.cat-index-card-content img {
+    width: 90%;
 }

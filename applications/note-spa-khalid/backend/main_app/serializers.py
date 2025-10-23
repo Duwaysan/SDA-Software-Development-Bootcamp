@@ -1,6 +1,19 @@
 from rest_framework import serializers
-from .models import Note
+from .models import Note, Photo
 from django.contrib.auth.models import User
+
+class PhotoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Photo
+        fields = '__all__'
+
+class NoteSerializer(serializers.ModelSerializer):
+    photo = PhotoSerializer(read_only=True)
+    
+    class Meta:
+        model = Note
+        fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
     # Add a password field, make it write-only
@@ -19,8 +32,3 @@ class UserSerializer(serializers.ModelSerializer):
         )
       
         return user
-
-class NoteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Note
-        fields = '__all__'
