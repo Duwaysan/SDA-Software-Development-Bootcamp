@@ -46,5 +46,5 @@ class Photo(models.Model):
     cat = models.OneToOneField(Cat, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Photo for cat_id: {self.cat.id} @{self.url}"
+        return self.url
     
