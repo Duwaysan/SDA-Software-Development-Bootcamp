@@ -37,7 +37,7 @@ SQL_ENGINE=django.db.backends.postgresql
 SQL_DATABASE=cats_django_dev
 SQL_USER=docker_django_user
 SQL_PASSWORD=hello_django
-SQL_HOST=database
+SQL_HOST=db
 SQL_PORT=5432
 ```
 
@@ -98,7 +98,7 @@ dependencies or configurations on our host machine.
 
 ```dockerfile
 # Base image
-FROM python:3.9
+FROM python:3.10
 
 # Set working directory
 WORKDIR /usr/src/backend
@@ -141,24 +141,14 @@ Create a `docker-compose.yml` file in your project's root directory with the fol
 
 ```dockerfile
 services:
-  catcollectorspa:
-    image: postgres
-    container_name: catcollectorspa
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      POSTGRES_USER: cat_admin
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: catcollectorspa
-
-  backend:
+  api: #name of the service
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: backend_api
+    container_name: "backend_api" #name of the container
     command: >
-      bash -c "python manage.py makemigrations &&
-               python manage.py migrate &&
+      bash -c "python manage.py makemigrations && 
+               python manage.py migrate && 
                python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend/:/usr/src/backend/
@@ -167,7 +157,21 @@ services:
     env_file:
       - ./backend/.env.dev
     depends_on:
-      - catcollectorspa
+      - db
+
+  db:
+    image: postgres:16
+    container_name: db
+    restart: always
+    environment:
+      POSTGRES_USER: docker_django_user
+      POSTGRES_PASSWORD: hello_django
+      POSTGRES_DB: cats_django_dev
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+
 
 volumes:
   postgres_data:

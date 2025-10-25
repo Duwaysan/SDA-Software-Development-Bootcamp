@@ -11,7 +11,7 @@ To begin this process, we create a `Dockerfile` in the React project's root dire
 for containerizing the React frontend application. Here's a detailed breakdown of the Dockerfile:
 
 ```dockerfile
-FROM node:16
+FROM node:20
 
 WORKDIR /app
 
@@ -20,7 +20,7 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 5173
 
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
 ```
@@ -40,14 +40,12 @@ consistent environment, significantly improving the workflow efficiency for all 
 Go to your docker-compose.yml and change the copy the content from below into the file to include your frontend information.
 
 ```dockerfile
-version: '3.8'
-
 services:
-  api:
+  api: #name of the service
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: "backend_api"
+    container_name: "backend_api" #name of the container
     command: >
       bash -c "python manage.py makemigrations && 
                python manage.py migrate && 
@@ -67,7 +65,7 @@ services:
       dockerfile: Dockerfile
     container_name: "react_frontend"
     ports:
-      - "3000:3000"
+      - "5173:5173"
     volumes:
       - ./frontend:/app
       - /app/node_modules
@@ -76,15 +74,19 @@ services:
     depends_on:
       - api
 
-  db:
-    image: postgres
-    container_name: "database"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
+  db: #name of the service
+    image: postgres:16
+    container_name: db
+    restart: always
     environment:
-      - POSTGRES_USER=docker_django_user
-      - POSTGRES_PASSWORD=hello_django
-      - POSTGRES_DB=cats_django_dev
+      POSTGRES_USER: docker_django_user
+      POSTGRES_PASSWORD: hello_django
+      POSTGRES_DB: cats_django_dev
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+
 
 volumes:
   postgres_data:
