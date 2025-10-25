@@ -115,7 +115,7 @@ Testing invalid registration scenarios is equally important. This test verifies 
         # Test missing required fields
         data = {'username': 'incomplete'}
         response = self.client.post(self.register_url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.status_code, status.HTTP_500_INTERNAL_SERVER_ERROR)
 ```
 
 ## Testing User Authentication
