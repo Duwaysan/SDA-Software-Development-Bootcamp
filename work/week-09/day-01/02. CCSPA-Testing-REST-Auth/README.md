@@ -98,7 +98,7 @@ Try it in your Cat Collector Project!
         }
         response = self.client.post(self.register_url, data, format='json')
 
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertIn('access', response.data)
         self.assertIn('refresh', response.data)
         self.assertIn('user', response.data)
