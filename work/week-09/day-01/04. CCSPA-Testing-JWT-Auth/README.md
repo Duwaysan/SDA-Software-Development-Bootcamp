@@ -91,11 +91,6 @@ What they provide:
 
 `MagicMock` is a special type of mock object that comes with built-in support for common magic methods (e.g., __getitem__, __setitem__, __call__). It can simulate complex behaviors of objects or functions during tests. It is a subclass of Mock with extra functionality for special methods that allows setting return values, side effects, and attributes dynamically.
 
-Useful for simulating more complex objects with behaviors like __len__ or __iter__.
-
-**it gives us access to more complicated behavior**
-**let's keep moving and see it in action so it makes more sense**
-
 ## Let's Test!
 Today we will implement another version of JWT testing, but this time using mock data.
 We will do so in the following areas:
