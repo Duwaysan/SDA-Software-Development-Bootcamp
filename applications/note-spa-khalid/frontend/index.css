@@ -128,7 +128,7 @@ nav li {
 }
 
 .submit {
-  color: var(--submit);
+  color: rgb(138, 13, 162);
   border-color: var(--submit);
 }
 

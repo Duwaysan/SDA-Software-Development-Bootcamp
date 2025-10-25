@@ -54,6 +54,7 @@
     padding: 0px 30px;
     align-items: center;
     justify-content: space-between;
+    
 }
 
 .subsection-title {
@@ -122,7 +123,7 @@
 .feedings-toy-container > section {
     width: 100%;
     min-width: 360px;
-    border: var(--borders);
+    border: #7f47b3 2px solid;
     border-radius: var(--card-border-radius);
     padding: 10px;
     box-shadow: var(--card-box-shadow);
@@ -181,11 +182,11 @@
 .feedings th {
     font-size: var(--font-l);
     padding: 5px 5px 0;
-    border-bottom: rgb(36, 116, 248) solid 2px;
+    border-bottom: rgb(145, 14, 166) solid 2px;
 }
 
 .feedings tr:nth-child(even) {
-    background-color: #f3f3fd;
+    background-color: #f7f1fb;
 }
 
 .toy-container p {
@@ -236,6 +237,6 @@
     }
 
     .feedings-toy-container>section {
-        width: 45%;
+        width: 100%;
     }
 }

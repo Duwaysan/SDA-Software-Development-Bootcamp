@@ -1,13 +1,61 @@
+// IMPORTS
 import "./styles.css";
-import logo_books from "../../assets/images/notelogo.png";
+import { useState } from "react";
 
-export default function HomePage() {
-  return (
+import { Navigate } from "react-router";
+
+// IMAGES
+import catCollectorCat from "../../assets/images/notelogo.png";
+import logoType from "../../assets/images/notetypelogo.png";
+// APIs
+import * as usersAPI from "../../utilities/users-api.js";
+
+
+
+
+export default function HomePage({ user, setUser }) {
+  const initialState = { username: "", password: "" }
+  const [formData, setFormData] = useState(initialState)
+
+  function handleChange(evt) {
+    setFormData({ ...formData, [evt.target.name]: evt.target.value})
+  }
+
+  async function handleLogin(evt) {
+      try {
+        evt.preventDefault();
+        const loggedInUser = await usersAPI.login(formData);
+        setUser(loggedInUser);
+        Navigate("/notes");
+        console.log("Login successful:", loggedInUser);
+      } catch (err) {
+        console.log("Login error:", err);
+        setUser(null);
+      }
+  }
+
+  return (<>
     <section className="logo-container">
-      <div className="home-note-container">
-        <img src={logo_books} alt="The note app logo" />
+      <div className="home-cat-container">
+        <img src={catCollectorCat} alt="The Cat Collector Cat" />
       </div>
-      {/* <img src={bookImg} alt="Text reads: Cat Collector" /> */}
+      <img src={logoType} alt="Text reads: Cat Collector" />
     </section>
-  )
+    {!user &&
+      <section>
+        <form onSubmit={handleLogin} className="form-container login">
+          <h1>Login</h1>
+          <p>
+            <label htmlFor="id_username">Username:</label>
+            <input value={formData.username} type="text" name="username" maxLength="150" required id="id_username" onChange={handleChange}/>
+          </p>
+          <p>
+            <label htmlFor="id_password">Password:</label>
+            <input value={formData.password} type="password" name="password" required id="id_password" onChange={handleChange} />
+          </p>
+          <button type="submit" className="btn submit">Login</button>
+        </form>
+      </section>
+    }
+  </>)
 }

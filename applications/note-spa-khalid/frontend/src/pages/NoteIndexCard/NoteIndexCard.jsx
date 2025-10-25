@@ -10,7 +10,6 @@ export default function NoteIndexCard({note}) {
                         ? <img src={note.photo.url} alt={`A photo of ${note.name}`} className="usr-img" />
                         : <img src={bookImg} alt="red book" />
                     }
-                {/* <img id='card-img'src={bookImg} alt="red book" /> */}
                 <h2>{note.title}</h2>
                 <p>   {`${note.description}`}</p>
                 <p><small>{note.created_at.slice(0,10)}</small></p>

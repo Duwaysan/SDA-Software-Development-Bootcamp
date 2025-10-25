@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Note, Photo
+from .models import Note, Photo,  Comment, Category
 from django.contrib.auth.models import User
 
 class PhotoSerializer(serializers.ModelSerializer):
@@ -10,9 +10,22 @@ class PhotoSerializer(serializers.ModelSerializer):
 
 class NoteSerializer(serializers.ModelSerializer):
     photo = PhotoSerializer(read_only=True)
-    
+    categories = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = Note
+        fields = '__all__'
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+
+class CategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
         fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):

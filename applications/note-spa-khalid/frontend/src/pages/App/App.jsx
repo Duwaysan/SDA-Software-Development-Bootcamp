@@ -8,9 +8,25 @@ import NoteIndexPage from '../NoteIndexPage/NoteIndexPage.jsx';
 import { useLocation, Navigate } from 'react-router';
 import NoteDetailPage from '../NoteDetailPage/NoteDetailPage.jsx';
 import NoteFormPage from '../NoteFormPage/NoteFormPage.jsx';
+import CategoryFormPage from '../CategoryFormPage/CategoryFormPage.jsx';
+import CategoryDetailPage from '../CategoryDetailPage/CategoryDetailPage.jsx';
+import CategoryIndexPage from '../CategoryIndexPage/CategoryIndexPage.jsx';
+import { useState, useEffect} from 'react';
+import Navbar from '../../components/NavBar/NavBar.jsx';
+import SignupPage from '../SignupPage/SignupPage.jsx';
+import { getUser } from '../../utilities/users-api.js';
 
 function App() {
   const location = useLocation()
+  const [user, setUser] = useState(null)
+
+   useEffect(() => {
+    async function checkUser() {
+      const foundUser = await getUser();
+      setUser(foundUser)
+    }
+    checkUser()
+  }, [])
   
   return (<>
       <header>
@@ -22,24 +38,35 @@ function App() {
           </a>
         </div>
         <nav>
-          <ul>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/notes">All Notes</Link></li>
-            <li><Link to="/notes/new">Create Notes</Link></li>
-          </ul>
+<ul>
+      <Navbar user={user} setUser={setUser} />
+    </ul>
         </nav>
       </header>
       <main>
         <Routes>
-          <Route path="/home"                       element={<HomePage />}/>
-          <Route path="/about"                      element={<AboutPage />} />
-          <Route path="/notes"                      element={<NoteIndexPage />} />
-          <Route path="/notes/:id"                  element={ <NoteDetailPage/>}/>
-          <Route path="/*"                          element={ <Navigate to="/home"/>}/>
-          <Route path="/notes/new"                  element={<NoteFormPage  createNote={true}/>}/>
-          <Route path="/notes/edit/:id"              element={<NoteFormPage editNote={true}   />}/>
-          <Route path="/notes/confirm_delete/:id"    element={<NoteFormPage deleteNote={true} />}/>
-          
+          {user ? <>
+          <Route path="/*"                                     element={<Navigate to="/home"/>}/>
+          <Route path="/home"                                  element={<HomePage />}/>
+          <Route path="/about"                                 element={<AboutPage />} />
+          <Route path="/notes"                                 element={<NoteIndexPage />} />
+          <Route path="/notes/:id"                             element={<NoteDetailPage/>}/>
+          <Route path="/notes/new"                             element={<NoteFormPage  createNote={true}/>}/>
+          <Route path="/notes/edit/:id"                        element={<NoteFormPage editNote={true}   />}/>
+          <Route path="/notes/confirm_delete/:id"              element={<NoteFormPage deleteNote={true} />}/>
+          <Route path="/categories/:id"                        element={<CategoryDetailPage/>} />
+          <Route path="/categories"                            element={<CategoryIndexPage />} />
+          <Route path="/categories/new"                        element={<CategoryFormPage  createCategory={true} />} />
+          <Route path="/categories/edit/:id"                   element={<CategoryFormPage  editCategory={true}/>} />
+          <Route path="/categories/confirm_delete/:id"         element={<CategoryFormPage  deleteCategory={true}/>} />
+          </>
+          : 
+          <>
+          <Route path="/*"                                     element={<Navigate to="/home"/>}/>
+          <Route path="/home"                                  element={<HomePage user={user} setUser={setUser}/>}/>
+          <Route path="/about"                                 element={<AboutPage />} />
+          <Route path="/signup"                                element={<SignupPage user={user} setUser={setUser} />}/>
+          </>}
       </Routes>
       </main>
     </>);

@@ -21,6 +21,9 @@ main.home > section {
 
 .logo-container {
     max-width: 375px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
 }
 
 .home-cat-container {

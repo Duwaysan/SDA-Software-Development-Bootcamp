@@ -1,0 +1,10 @@
+.form-container{
+    display: flex;
+    justify-content: center;
+}
+.submit {
+    margin: 15px auto;
+    font-size: 12pt;
+    width: 150px;
+    border: solid rgb(76, 47, 100); 
+}

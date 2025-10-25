@@ -24,3 +24,11 @@ export async function deleteNote(noteId) {
 export function addPhoto(noteId, formData) {
     return sendRequest(`${baseURL}${noteId}/add-photo/`, "POST", formData)
 }
+
+export function addCategoryToNote(noteId, categoryId) {
+    return sendRequest(`${baseURL}${noteId}/associate-category/${categoryId}/`, "POST")
+}
+
+export function removeToy(noteId, categoryId) {
+    return sendRequest(`${baseURL}${noteId}/remove-category/${categoryId}/`, "POST")
+}
