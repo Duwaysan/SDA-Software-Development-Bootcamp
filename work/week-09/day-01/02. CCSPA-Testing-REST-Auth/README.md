@@ -209,7 +209,7 @@ Lastly, testing protected endpoints verifies that our authentication middleware 
     def test_authentication_required_endpoints(self):
         """Test endpoints that require authentication"""
         # Try accessing protected endpoint without authentication
-        cats_url = reverse('cat-list')
+        cats_url = reverse('cat-index')
         response = self.client.get(cats_url)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
