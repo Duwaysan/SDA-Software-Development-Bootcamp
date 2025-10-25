@@ -91,6 +91,72 @@ What they provide:
 
 `MagicMock` is a special type of mock object that comes with built-in support for common magic methods (e.g., __getitem__, __setitem__, __call__). It can simulate complex behaviors of objects or functions during tests. It is a subclass of Mock with extra functionality for special methods that allows setting return values, side effects, and attributes dynamically.
 
+#### Used together: 
+- patch swaps out the real object
+- MagicMock defines how that replacement behaves.
+
+**Analogy:**
+- Think of patch as “pointing a fake sign at the real object” so any calls go to the fake.
+- MagicMock is the fake object itself that responds the way you want.
+
+### Flow Diagram: JWT Token Verification Test with patch + MagicMock
+```
+Client Request
+   |
+   v
+APITestCase.client.get('/token/refresh/')   <-- API call made in test
+   |
+   v
+DRF View (token_refresh endpoint)
+   |
+   |  Calls JWTAuthentication.get_validated_token
+   |  ------------------------------- 
+   |  patch replaces get_validated_token with a MagicMock
+   v
+MagicMock Token
+   |  - Simulates token validation
+   |  - Returns a fake token object (mock_token)
+   |
+   v
+DRF View calls JWTAuthentication.get_user
+   |  -------------------------------
+   |  patch replaces get_user with MagicMock
+   v
+MagicMock User
+   |  - Simulates a real user object (username, id, etc.)
+   |
+   v
+DRF Serializer + Response
+   |  - Uses mocked user and token
+   |  - Generates JSON response (access, refresh, user)
+   v
+Client Response (self.client.get)
+```
+
+### Step-by-Step Explanation
+
+1. **Trigger API call**  
+   The test triggers an API call using `self.client.get()` (or `.post()` for login).
+
+2. **Patch intercepts methods**  
+   `patch` temporarily replaces specific methods in your DRF view or authentication backend:  
+   - `JWTAuthentication.get_validated_token` → replaced with a `MagicMock`  
+   - `JWTAuthentication.get_user` → replaced with another `MagicMock`
+
+3. **MagicMock simulates real behavior**  
+   - `mock_token.access_token` returns a fake access token  
+   - `mock_user.username` returns `'testuser'`  
+   - You can also define `.is_active`, `.is_authenticated`, etc.
+
+4. **DRF view runs normally**  
+   The view executes as usual, but uses the mocked objects instead of real database queries or JWT logic.
+
+5. **Response is returned**  
+   The response is returned to `self.client.get()` in your test, allowing you to assert:  
+   - `status_code == 200`  
+   - Response contains `access`, `refresh`, and `user`  
+   - User data matches what you set in the `MagicMock`
+
 ## Let's Test!
 Today we will implement another version of JWT testing, but this time using mock data.
 We will do so in the following areas:
