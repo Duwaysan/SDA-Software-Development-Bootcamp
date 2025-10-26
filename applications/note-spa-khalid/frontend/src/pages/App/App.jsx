@@ -47,7 +47,7 @@ function App() {
         <Routes>
           {user ? <>
           <Route path="/*"                                     element={<Navigate to="/home"/>}/>
-          <Route path="/home"                                  element={<HomePage />}/>
+          <Route path="/home"                                  element={<HomePage user={user} setUser={setUser} />}/>
           <Route path="/about"                                 element={<AboutPage />} />
           <Route path="/notes"                                 element={<NoteIndexPage />} />
           <Route path="/notes/:id"                             element={<NoteDetailPage/>}/>

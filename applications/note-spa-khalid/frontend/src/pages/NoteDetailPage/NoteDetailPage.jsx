@@ -30,9 +30,10 @@ export default function NoteDetailPage() {
 	useEffect(() => {
 		async function getAndSetDetail() {
 			const noteDetailData = await noteAPI.show(id);
+			console.log("Note Detail Data:", noteDetailData);
 			setNoteDetail(noteDetailData.note);
 			setNoteComments(noteDetailData.comments);
-			setCategoriesNoteHas(noteDetailData.noteCategoriesiesNoteHas);
+			setCategoriesNoteHas(noteDetailData.noteCategoriesNoteHas);
 			setCategoriesNoteDoesntHave(noteDetailData.categoriesNoteDoesntHave);
 		}
 		if (id) getAndSetDetail()
@@ -44,11 +45,11 @@ export default function NoteDetailPage() {
 			evt.preventDefault()
 			const categoryData = await noteAPI.addCategoryToNote(noteDetail.id, categoryId);
 			setCategoriesNoteHas(categoryData.categoriesNoteHas);
-			setCategoriesNoteDoesNotHave(categoryData.categoriesNoteDoesntHave);
+			setCategoriesNoteDoesntHave(categoryData.categoriesNoteDoesntHave);
 		} catch (err) {
 			console.log(err);
 			setCategoriesNoteHas([...categoriesNoteHas]);
-			setCategoriesNoteDoesNotHave([...categoriesNoteDoesntHave]);
+			setCategoriesNoteDoesntHave([...categoriesNoteDoesntHave]);
 		}
 	}
 
@@ -80,11 +81,11 @@ export default function NoteDetailPage() {
 			evt.preventDefault()
 			const categoryData = await noteAPI.removeCategoryFromNote(noteDetail.id, categoryId);
 			setCategoriesNoteHas(categoryData.categoriesNoteHas);
-			setCategoriesNoteDoesNotHave(categoryData.categoriesNoteDoesntHave);
+			setCategoriesNoteDoesntHave(categoryData.categoriesNoteDoesntHave);
 		} catch (err) {
 			console.log(err);
 			setCategoriesNoteHas([...categoriesNoteHas]);
-			setCategoriesNoteDoesNotHave([...categoriesNoteDoesntHave]);
+			setCategoriesNoteDoesntHave([...categoriesNoteDoesntHave]);
 		}
 	}
 	

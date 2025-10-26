@@ -2,7 +2,7 @@
 import "./styles.css";
 import { useState } from "react";
 
-import { Navigate } from "react-router";
+import { useNavigate } from "react-router";
 
 // IMAGES
 import catCollectorCat from "../../assets/images/notelogo.png";
@@ -16,6 +16,7 @@ import * as usersAPI from "../../utilities/users-api.js";
 export default function HomePage({ user, setUser }) {
   const initialState = { username: "", password: "" }
   const [formData, setFormData] = useState(initialState)
+  const navigate = useNavigate()
 
   function handleChange(evt) {
     setFormData({ ...formData, [evt.target.name]: evt.target.value})
@@ -26,7 +27,7 @@ export default function HomePage({ user, setUser }) {
         evt.preventDefault();
         const loggedInUser = await usersAPI.login(formData);
         setUser(loggedInUser);
-        Navigate("/notes");
+        navigate("/notes");
         console.log("Login successful:", loggedInUser);
       } catch (err) {
         console.log("Login error:", err);
