@@ -43,9 +43,16 @@ class NoteDetail(APIView):
 
   def get(self, request, note_id):
     try:
-        queryset = get_object_or_404(Note, id=note_id)
-        note = self.serializer_class(queryset)
-        return Response(note.data, status=status.HTTP_200_OK)
+      note = get_object_or_404(Note, id=note_id)
+      comments = Comment.objects.filter(note=note_id)
+      categoriesNoteHas = Category.objects.filter(note=note_id)
+      categoriesNoteDoesntHave = Category.objects.exclude(id__in=note.categories.all().values_list('id'))
+      return Response({
+          "note": NoteSerializer(note).data,
+          "comments": CommentSerializer(comments, many=True).data,
+          "categoriesNoteHas": CategorySerializer(categoriesNoteHas, many=True).data,
+          "categoriesNoteDoesntHave": CategorySerializer(categoriesNoteDoesntHave, many=True).data
+      }, status=status.HTTP_200_OK)
     except Exception as err:
         return Response({'error': str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     

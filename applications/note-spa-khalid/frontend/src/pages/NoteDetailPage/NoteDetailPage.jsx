@@ -18,7 +18,7 @@ import * as categoriesAPI from "../../utilities/category-api";
 
 
 
-
+// ADD new allCategories state
 
 export default function NoteDetailPage() {
 	const [noteComments, setNoteComments] = useState([]);
@@ -33,11 +33,19 @@ export default function NoteDetailPage() {
 			console.log("Note Detail Data:", noteDetailData);
 			setNoteDetail(noteDetailData.note);
 			setNoteComments(noteDetailData.comments);
-			setCategoriesNoteHas(noteDetailData.noteCategoriesNoteHas);
+			setCategoriesNoteHas(noteDetailData.categoriesNoteHas);
 			setCategoriesNoteDoesntHave(noteDetailData.categoriesNoteDoesntHave);
 		}
 		if (id) getAndSetDetail()
 	}, [id])
+
+	// update useEffect.getAndSetDetail function:
+	//   useEffect(() => {
+	//     async function getAndSetDetail() {
+	//     }
+	//     if (id) getAndSetDetail()
+	//   }, [id])
+
 
 
 	async function handleAddCategory(evt, categoryId) {
@@ -53,12 +61,20 @@ export default function NoteDetailPage() {
 		}
 	}
 
-	const noteCategories = categoriesNoteHas.map(category => (
-		console.log("Category in noteCategories:", category),
-		<DisplayNoteCategories key={category.id} category={category} submitFunction={handleAddCategory} formAction="Give Category" />
-	))
 
 
+	async function handleRemoveCategory(evt, categoryId) {
+		try {
+			evt.preventDefault()
+			const categoryData = await noteAPI.removeCategoryFromNote(noteDetail.id, categoryId);
+			setCategoriesNoteHas(categoryData.categoriesNoteHas);
+			setCategoriesNoteDoesntHave(categoryData.categoriesNoteDoesntHave);
+		} catch (err) {
+			console.log(err);
+			setCategoriesNoteHas([...categoriesNoteHas]);
+			setCategoriesNoteDoesntHave([...categoriesNoteDoesntHave]);
+		}
+	}
 	{
 		categoriesNoteHas.map(category => (
 			<div key={category.id} className="toy-container">
@@ -76,26 +92,14 @@ export default function NoteDetailPage() {
 			</div>
 		))
 	}
-	async function handleRemoveCategory(evt, categoryId) {
-		try {
-			evt.preventDefault()
-			const categoryData = await noteAPI.removeCategoryFromNote(noteDetail.id, categoryId);
-			setCategoriesNoteHas(categoryData.categoriesNoteHas);
-			setCategoriesNoteDoesntHave(categoryData.categoriesNoteDoesntHave);
-		} catch (err) {
-			console.log(err);
-			setCategoriesNoteHas([...categoriesNoteHas]);
-			setCategoriesNoteDoesntHave([...categoriesNoteDoesntHave]);
-		}
-	}
-	
-const noNoteCategories = categoriesNoteHas.map(category => (
-  <DisplayNoteCategories key={category.id} category={category} submitFunction={handleRemoveCategory} formAction="Take Category" />
-))
-  { noNoteCategories.length > 0 
-    ? { noNoteCategories }
-    : <p class="all-toys"> already has all the available categories 🥳</p>
-  }
+	const noteCategories = categoriesNoteHas.map(category => (
+		<DisplayNoteCategories key={category.id} category={category} submitFunction={handleRemoveCategory} formAction="Take Category" />
+	))
+
+	const noNoteCategories = categoriesNoteDoesntHave.map(category => (
+		<DisplayNoteCategories key={category.id} category={category} submitFunction={handleAddCategory} formAction="Give Toy" />
+	))
+
 	async function addPhoto(noteId, formData) {
 		try {
 			const updatedNote = await noteAPI.addPhoto(noteId, formData);
@@ -118,7 +122,7 @@ const noNoteCategories = categoriesNoteHas.map(category => (
 			<div className="cat-details">
 				<h1>{`Title: ${noteDetail.title}`}</h1>
 				<h2>{`Description: ${noteDetail.description} `}</h2>
-				<p>{noteDetail.created_at.slice(0, 10)}</p>
+				<p>{noteDetail.created_at}</p>
 			</div>
 			<div className="cat-actions">
 				<Link to={`/notes/edit/${noteDetail.id}`} className="btn warn">Edit</Link>
@@ -149,8 +153,6 @@ const noNoteCategories = categoriesNoteHas.map(category => (
 									<td>{cmnt.title}</td>
 									<td>{cmnt.comment}</td>
 									<td>{cmnt.created_at.slice(0, 10)}</td>
-									{/* <td>{meal.date}</td>
-								<td>{MEALS[meal.meal]}</td> */}
 								</tr>
 							))}
 						</tbody>
@@ -162,26 +164,21 @@ const noNoteCategories = categoriesNoteHas.map(category => (
 				}
 			</section>
 		</div>
-		<section class="toys">
-			<div class="subsection-title">
+		<section className="toys">
+			<div className="subsection-title">
 				<h2>Categories</h2>
 			</div>
 			<h3>Available Categories</h3>
 			<div className="subsection-content">
-				{allCategories.map(category => (
-					<div key={category.id} className="toy-container">
-						<div className="toy-info">
-							<div className="color-block" ></div>
-							<Link to={`/categorys/${category.id}`}>
-								<p>A {category.name}</p>
-							</Link>
-						</div>
-					</div>
-				))}
+
 			</div>
 			{categoriesNoteHas.length > 0
-				? catCategories
-				: <p className="no-toys">{noteDetail.name} doesn't have any categories!</p>
+				? noteCategories
+				: <p className="no-toys">{noteDetail.title} doesn't have any categories!</p>
+			}
+			{categoriesNoteDoesntHave.length > 0
+				? noNoteCategories
+				: <p class="all-toys"> already has all the available categories 🥳</p>
 			}
 		</section>
 

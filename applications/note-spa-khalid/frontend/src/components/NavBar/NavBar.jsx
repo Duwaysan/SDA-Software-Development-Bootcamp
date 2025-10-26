@@ -20,10 +20,10 @@ export default function Navbar({ user, setUser }) {
         return (
             <>
                 <li><Link to="/about">About</Link></li>
-                <li><Link to="/notes">All Cats</Link></li>
-                <li><Link to="/notes/new">New Cat</Link></li>
-                <li><Link to="/categories/new">Add a Toy</Link></li>
-                <li><Link to="/categories">All Toys</Link></li>
+                <li><Link to="/notes">All Notes</Link></li>
+                <li><Link to="/notes/new">New Note</Link></li>
+                <li><Link to="/categories/new">Add a Category</Link></li>
+                <li><Link to="/categories">All Categories</Link></li>
                 <form id="logout-form" onSubmit={handleLogout}>
                     <button type="submit">Log out</button>
                 </form>
