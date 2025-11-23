@@ -117,7 +117,7 @@ EXPOSE 8000
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 ```
 
-The Dockerfile begins with `FROM python:3.9`, which specifies Python `3.9` as the base image - a version chosen for its
+The Dockerfile begins with `FROM python:3.10`, which specifies Python `3.10` as the base image - a version chosen for its
 broad compatibility with modern Django installations. Within the container, `/usr/src/backend` is designated as the
 working directory through `WORKDIR`, establishing the location where Django's project files will be stored. The build
 process continues with two critical steps: first copying the requirements.txt file into the container, then using pip to

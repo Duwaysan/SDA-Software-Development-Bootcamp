@@ -52,7 +52,6 @@ class VerifyUserView(APIView):
   def get(self, request):
     try:
       user = User.objects.get(username=request.user.username)
-      print("Verify user function in views!!", user)
       try:
         refresh = RefreshToken.for_user(user)
         return Response({'refresh': str(refresh),'access': str(refresh.access_token),'user': UserSerializer(user).data}, status=status.HTTP_200_OK)
