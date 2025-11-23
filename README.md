@@ -69,17 +69,6 @@ Covered:
 
 ---
 
-### 🔹 Career Coaching  
-Covered:
-- Professional branding  
-- LinkedIn optimization  
-- Interview prep  
-- Communication skills  
-
-💡 *Helped strengthen my profile and transition into AI & cybersecurity roles.*
-
----
-
 
 ## 🙏 Acknowledgment  
 Special thanks to the SDA & GA instructional team for their guidance throughout the program. Their support provided the foundation that I continue to build on today in my professional work.
