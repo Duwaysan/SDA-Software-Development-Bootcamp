@@ -1,20 +1,21 @@
-import './App.css'
-import { Route, Routes, Link } from 'react-router';
-import headerLogo from "../../assets/images/notelogo.png"
-import headerWrittenLogo from "../../assets/images/notetypelogo.png"
+import Navbar from '../../components/NavBar/NavBar.jsx';
+import NoteFormPage from '../NoteFormPage/NoteFormPage.jsx';
+import NoteDetailPage from '../NoteDetailPage/NoteDetailPage.jsx';
 import AboutPage from "../AboutPage/AboutPage.jsx"
 import HomePage from "../HomePage/HomePage.jsx"
 import NoteIndexPage from '../NoteIndexPage/NoteIndexPage.jsx';
-import { useLocation, Navigate } from 'react-router';
-import NoteDetailPage from '../NoteDetailPage/NoteDetailPage.jsx';
-import NoteFormPage from '../NoteFormPage/NoteFormPage.jsx';
 import CategoryFormPage from '../CategoryFormPage/CategoryFormPage.jsx';
 import CategoryDetailPage from '../CategoryDetailPage/CategoryDetailPage.jsx';
-import CategoryIndexPage from '../CategoryIndexPage/CategoryIndexPage.jsx';
-import { useState, useEffect} from 'react';
-import Navbar from '../../components/NavBar/NavBar.jsx';
 import SignupPage from '../SignupPage/SignupPage.jsx';
+import CategoryIndexPage from '../CategoryIndexPage/CategoryIndexPage.jsx';
+import './styles.css'
+import { Route, Routes, Link } from 'react-router';
+import { useLocation, Navigate } from 'react-router';
+import { useState, useEffect} from 'react';
 import { getUser } from '../../utilities/users-api.js';
+
+import headerLogo from "../../assets/images/notelogo.png"
+import headerWrittenLogo from "../../assets/images/notetypelogo.png"
 
 function App() {
   const location = useLocation()

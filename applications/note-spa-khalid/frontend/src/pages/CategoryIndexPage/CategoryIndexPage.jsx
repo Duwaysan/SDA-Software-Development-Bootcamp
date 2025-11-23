@@ -25,7 +25,9 @@ export default function CategoryIndexPage() {
     return (<>
         <section className="page-header">
             <h1>All Notes Categories</h1>
+    
         </section>
+
         <section className="toy-index-card-container">
         {allCategories.map(category => (
           <div key={category.id} className="toy-index-card" >
